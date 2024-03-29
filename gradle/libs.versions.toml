@@ -1,0 +1,19 @@
+[versions]
+asciidoctor = "3.3.2"
+mockito-kotlin = "5.2.1"
+spotless = "6.25.0"
+spring-boot = "3.2.4"
+spring-cloud-contract = "4.1.0"
+spring-cloud = "2023.0.0"
+spring-dependency-management = "1.1.4"
+
+[libraries]
+spring-cloud-bom = { module = "org.springframework.cloud:spring-cloud-dependencies", version.ref = "spring-cloud" }
+mockito-kotlin = { module = "org.mockito.kotlin:mockito-kotlin", version.ref = "mockito-kotlin" }
+
+[plugins]
+asciidoctor = { id = "org.asciidoctor.jvm.convert", version.ref = "asciidoctor" }
+spotless = { id = "com.diffplug.spotless", version.ref = "spotless" }
+spring-boot = { id = "org.springframework.boot", version.ref = "spring-boot" }
+spring-dependency-management = { id = "io.spring.dependency-management", version.ref = "spring-dependency-management" }
+spring-cloud-contract = { id = "org.springframework.cloud.contract", version.ref = "spring-cloud-contract" }
