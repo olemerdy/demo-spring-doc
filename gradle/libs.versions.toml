@@ -1,5 +1,5 @@
 [versions]
-asciidoctor = "3.3.2"
+asciidoctor = "4.0.2"
 mockito-kotlin = "5.2.1"
 spotless = "6.25.0"
 spring-boot = "3.2.4"
