@@ -7,7 +7,7 @@ import org.springframework.boot.test.autoconfigure.data.ldap.DataLdapTest
 
 @DataLdapTest
 class PersonRepositoryTest(
-    @Autowired val repository: PersonRepository
+    @Autowired val repository: PersonRepository,
 ) {
     @Test
     fun test() {
