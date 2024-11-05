@@ -1,18 +1,24 @@
 [versions]
 asciidoctor = "3.3.2"
+ben-manes-versions = "0.51.0"
+cucumber = "7.20.1"
+cucumber-companion = "1.2.0"
 mockito-kotlin = "5.4.0"
 spotless = "6.25.0"
-spring-boot = "3.3.3"
+spring-boot = "3.3.5"
 spring-cloud-contract = "4.1.4"
 spring-cloud = "2023.0.3"
 spring-dependency-management = "1.1.6"
 
 [libraries]
+cucumber-bom = { module = "io.cucumber:cucumber-bom", version.ref = "cucumber" }
 spring-cloud-bom = { module = "org.springframework.cloud:spring-cloud-dependencies", version.ref = "spring-cloud" }
 mockito-kotlin = { module = "org.mockito.kotlin:mockito-kotlin", version.ref = "mockito-kotlin" }
 
 [plugins]
 asciidoctor = { id = "org.asciidoctor.jvm.convert", version.ref = "asciidoctor" }
+ben-manes-versions = { id = "com.github.ben-manes.versions", version.ref = "ben-manes-versions" }
+cucumber-companion = { id = "com.gradle.cucumber.companion", version.ref = "cucumber-companion" }
 spotless = { id = "com.diffplug.spotless", version.ref = "spotless" }
 spring-boot = { id = "org.springframework.boot", version.ref = "spring-boot" }
 spring-dependency-management = { id = "io.spring.dependency-management", version.ref = "spring-dependency-management" }
