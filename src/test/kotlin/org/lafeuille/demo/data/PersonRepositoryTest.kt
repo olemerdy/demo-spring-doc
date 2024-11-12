@@ -12,6 +12,6 @@ class PersonRepositoryTest(
     @Test
     fun test() {
         val people = repository.findAll()
-        assertThat(people).isEmpty()
+        assertThat(people).hasSize(2)
     }
 }

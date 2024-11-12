@@ -7,14 +7,13 @@ import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 import java.time.LocalDate
 import java.time.Month
-import java.util.UUID
 
 @RestController
 @RequestMapping("api/v1/people")
 class PeopleController {
     @GetMapping("{identifier}")
     fun readPerson(
-        @PathVariable identifier: UUID,
+        @PathVariable identifier: String,
     ): PersonResponse {
         return PersonResponse(
             identifier = identifier,
