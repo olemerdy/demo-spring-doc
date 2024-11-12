@@ -11,12 +11,12 @@ import java.time.Month
 @RestController
 @RequestMapping("api/v1/people")
 class PeopleController {
-    @GetMapping("{identifier}")
+    @GetMapping("{uid}")
     fun readPerson(
-        @PathVariable identifier: String,
+        @PathVariable uid: String,
     ): PersonResponse {
         return PersonResponse(
-            identifier = identifier,
+            uid = uid,
             birthDate = LocalDate.of(2001, Month.JANUARY, 1),
             familyName = "Doe",
             givenName = "John",

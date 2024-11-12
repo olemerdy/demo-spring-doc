@@ -4,6 +4,8 @@ import java.time.LocalDate
 import java.time.Month
 
 object PersonFixtures {
+    const val UID = "john.doe"
+
     const val GIVEN_NAME = "John"
 
     const val FAMILY_NAME = "Doe"
