@@ -4,7 +4,8 @@ import java.time.LocalDate
 
 // @see https://schema.org/Person
 data class PersonResponse(
-    val uid: String,
+    val identifier: String,
+    val name: String,
     val birthDate: LocalDate,
     val familyName: String,
     val givenName: String,
