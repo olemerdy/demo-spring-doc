@@ -82,5 +82,5 @@ tasks.asciidoctor {
 }
 
 contracts {
-    baseClassForTests = "org.lafeuille.demo.web.WebBaseContractVerifierTest"
+    baseClassForTests = "org.lafeuille.demo.BaseContractVerifierTest"
 }

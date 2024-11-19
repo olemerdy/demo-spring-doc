@@ -5,17 +5,27 @@ import org.springframework.ldap.odm.annotations.DnAttribute
 import org.springframework.ldap.odm.annotations.Entry
 import org.springframework.ldap.odm.annotations.Id
 import javax.naming.Name
+import javax.naming.ldap.LdapName
 
-@Entry(objectClasses = ["person", "top"], base = "ou=people,dc=lafeuille,dc=org")
+@Entry(objectClasses = ["person", "top"], base = Person.DN_BASE)
 class Person(
     @Id
     var dn: Name?,
+    @Attribute(name = "uid")
+    @DnAttribute("uid", index = 3)
+    var uid: String?,
     @Attribute(name = "cn")
-    @DnAttribute(value = "cn", index = 1)
-    var fullName: String?,
-    var birthDate: String?,
-    var lastName: String?,
-    var firstName: String?,
+    var commonName: String?,
+    var dateOfBirth: String?,
+    @Attribute(name = "sn")
+    var surname: String?,
+    var givenName: String?,
 ) {
-    constructor() : this(null, null, null, null, null)
+    constructor() : this(null, null, null, null, null, null)
+
+    companion object {
+        const val DN_BASE = "ou=people,dc=lafeuille,dc=org"
+
+        fun uidToName(uid: String): Name = LdapName("uid=$uid,$DN_BASE")
+    }
 }

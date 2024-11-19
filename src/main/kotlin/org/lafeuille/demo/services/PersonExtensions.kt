@@ -3,12 +3,13 @@ package org.lafeuille.demo.services
 import org.lafeuille.demo.data.Person
 import org.lafeuille.demo.domain.PersonResponse
 import java.time.LocalDate
+import java.time.Month
 
 internal fun Person.toResponse() =
     PersonResponse(
-        identifier = this.dn?.get(0)!!,
-        name = this.fullName!!,
-        birthDate = LocalDate.parse(this.birthDate!!),
-        familyName = this.lastName!!,
-        givenName = this.firstName!!,
+        identifier = this.uid!!,
+        name = this.commonName!!,
+        familyName = this.surname!!,
+        givenName = this.givenName!!,
+        birthDate = LocalDate.of(2001, Month.JANUARY, 1),
     )

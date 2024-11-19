@@ -1,43 +1,49 @@
 dn: dc=lafeuille,dc=org
-objectclass: top
-objectclass: domain
-objectclass: extensibleObject
+objectClass: top
+objectClass: domain
+objectClass: extensibleObject
 dc: lafeuille
 
 # Organizational Units
 dn: ou=groups,dc=lafeuille,dc=org
-objectclass: top
-objectclass: organizationalUnit
+objectClass: top
+objectClass: organizationalUnit
 ou: groups
 
 dn: ou=people,dc=lafeuille,dc=org
-objectclass: top
-objectclass: organizationalUnit
+objectClass: top
+objectClass: organizationalUnit
 ou: people
 
 # Create People
 dn: uid=john.doe,ou=people,dc=lafeuille,dc=org
-objectclass: top
-objectclass: person
-objectclass: organizationalPerson
-objectclass: inetOrgPerson
-cn: John Doe
-sn: John
+objectClass: top
+objectClass: person
+objectClass: inetOrgPerson
+objectClass: naturalPerson
+objectClass: organizationalPerson
 uid: john.doe
+cn: John Doe
+sn: Doe
+givenName: John
+dateOfBirth: 200101010000Z
 
 dn: uid=jane.smith,ou=people,dc=lafeuille,dc=org
-objectclass: top
-objectclass: person
-objectclass: organizationalPerson
-objectclass: inetOrgPerson
-cn: Jane Smith
-sn: Jane Smith
+objectClass: top
+objectClass: person
+objectClass: inetOrgPerson
+objectClass: naturalPerson
+objectClass: organizationalPerson
 uid: jane.smith
+cn: Jane Smith
+sn: Smith
+givenName: Jane
+dateOfBirth: 200202020000Z
 
 # Create Groups
 dn: cn=data,ou=groups,dc=lafeuille,dc=org
-objectclass: top
-objectclass: groupOfUniqueNames
+objectClass: top
+objectClass: groupOfUniqueNames
 cn: data
 ou: people
 uniqueMember: uid=john.doe,ou=people,dc=lafeuille,dc=org
