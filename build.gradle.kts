@@ -45,8 +45,7 @@ dependencies {
     testImplementation("org.springframework.restdocs:spring-restdocs-mockmvc")
     testImplementation(libs.mockito.kotlin)
 
-    testImplementation("org.junit.jupiter:junit-jupiter")
-    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+    testImplementation(kotlin("test"))
 }
 
 spotless {
@@ -59,8 +58,8 @@ spotless {
 }
 
 tasks.withType<KotlinCompile> {
-    kotlinOptions {
-        freeCompilerArgs += "-Xjsr305=strict"
+    compilerOptions {
+        freeCompilerArgs.add("-Xjsr305=strict")
     }
 }
 

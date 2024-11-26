@@ -26,4 +26,4 @@ jobs:
           build-scan-publish: true
           build-scan-terms-of-service-url: "https://gradle.com/terms-of-service"
           build-scan-terms-of-service-agree: "yes"
-      - run: ./gradlew build
+      - run: gradle build

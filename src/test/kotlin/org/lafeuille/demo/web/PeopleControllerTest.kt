@@ -9,7 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest
 import org.springframework.boot.test.mock.mockito.MockBean
 import org.springframework.test.web.servlet.MockMvc
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get
+import org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
 import java.util.Optional
 
@@ -21,7 +23,7 @@ class PeopleControllerTest(
     lateinit var service: PersonService
 
     @Test
-    fun test() {
+    fun test_GET_people_uid_OK() {
         whenever(service.getPerson(PersonFixtures.UID))
             .thenReturn(
                 Optional.of(
@@ -37,5 +39,27 @@ class PeopleControllerTest(
 
         mockMvc.perform(get("/api/v1/people/{uid}", PersonFixtures.UID))
             .andExpect(status().isOk)
+            .andExpect(jsonPath("\$.identifier").value(PersonFixtures.UID))
+            .andExpect(jsonPath("\$.name").value(PersonFixtures.FULL_NAME))
+            .andExpect(jsonPath("\$.familyName").value(PersonFixtures.FAMILY_NAME))
+            .andExpect(jsonPath("\$.givenName").value(PersonFixtures.GIVEN_NAME))
+            .andExpect(jsonPath("\$.birthDate").value(PersonFixtures.BIRTH_DATE.toString()))
+    }
+
+    @Test
+    fun test_GET_people_uid_NOT_FOUND() {
+        whenever(service.getPerson(PersonFixtures.UID))
+            .thenReturn(
+                Optional.empty(),
+            )
+
+        mockMvc.perform(get("/api/v1/people/{uid}", PersonFixtures.UID))
+            .andExpect(status().isNotFound)
+    }
+
+    @Test
+    fun test_DELETE_people_uid_NO_CONTENT() {
+        mockMvc.perform(delete("/api/v1/people/{uid}", PersonFixtures.UID))
+            .andExpect(status().isNoContent)
     }
 }
