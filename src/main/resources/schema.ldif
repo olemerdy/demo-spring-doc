@@ -26,7 +26,7 @@ uid: john.doe
 cn: John Doe
 sn: Doe
 givenName: John
-dateOfBirth: 200101010000Z
+dateOfBirth: 2001010100Z
 
 dn: uid=jane.smith,ou=people,dc=lafeuille,dc=org
 objectClass: top
@@ -38,7 +38,7 @@ uid: jane.smith
 cn: Jane Smith
 sn: Smith
 givenName: Jane
-dateOfBirth: 200202020000Z
+dateOfBirth: 2002020200Z
 
 # Create Groups
 dn: cn=data,ou=groups,dc=lafeuille,dc=org

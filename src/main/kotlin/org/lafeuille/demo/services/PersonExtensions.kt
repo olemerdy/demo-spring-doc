@@ -2,8 +2,12 @@ package org.lafeuille.demo.services
 
 import org.lafeuille.demo.data.Person
 import org.lafeuille.demo.domain.PersonResponse
-import java.time.LocalDate
-import java.time.Month
+import java.time.ZonedDateTime
+import java.time.format.DateTimeFormatter
+
+object PersonExtensions {
+    internal val GENERALIZED_TIME_FORMATTER: DateTimeFormatter by lazy { DateTimeFormatter.ofPattern("yyyyMMddHH[mm]VV") }
+}
 
 internal fun Person.toResponse() =
     PersonResponse(
@@ -11,5 +15,5 @@ internal fun Person.toResponse() =
         name = this.commonName!!,
         familyName = this.surname!!,
         givenName = this.givenName!!,
-        birthDate = LocalDate.of(2001, Month.JANUARY, 1),
+        birthDate = ZonedDateTime.parse(this.dateOfBirth!!, PersonExtensions.GENERALIZED_TIME_FORMATTER).toLocalDate(),
     )
