@@ -7,7 +7,10 @@ import org.springframework.ldap.odm.annotations.Id
 import javax.naming.Name
 import javax.naming.ldap.LdapName
 
-@Entry(objectClasses = ["person", "top"], base = Person.DN_BASE)
+@Entry(
+    objectClasses = ["inetOrgPerson", "naturalPerson", "organizationalPerson", "person", "top"],
+    base = Person.DN_BASE,
+)
 class Person(
     @Id
     var dn: Name?,
