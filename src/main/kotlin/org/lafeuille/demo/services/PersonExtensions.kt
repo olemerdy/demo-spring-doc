@@ -1,6 +1,6 @@
 package org.lafeuille.demo.services
 
-import org.lafeuille.demo.data.Person
+import org.lafeuille.demo.data.PersonEntry
 import org.lafeuille.demo.domain.PersonResponse
 import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
@@ -9,7 +9,7 @@ object PersonExtensions {
     internal val GENERALIZED_TIME_FORMATTER: DateTimeFormatter by lazy { DateTimeFormatter.ofPattern("yyyyMMddHH[mm]VV") }
 }
 
-internal fun Person.toResponse() =
+internal fun PersonEntry.toResponse() =
     PersonResponse(
         identifier = this.uid!!,
         name = this.commonName!!,

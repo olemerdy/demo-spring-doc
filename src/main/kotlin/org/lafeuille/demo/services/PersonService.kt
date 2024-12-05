@@ -1,6 +1,6 @@
 package org.lafeuille.demo.services
 
-import org.lafeuille.demo.data.Person
+import org.lafeuille.demo.data.PersonEntry
 import org.lafeuille.demo.data.PersonRepository
 import org.lafeuille.demo.domain.PersonResponse
 import org.springframework.data.domain.Page
@@ -20,11 +20,11 @@ class PersonService(
             .map { it.toResponse() }
 
     fun getPerson(uid: String): Optional<PersonResponse> =
-        repository.findById(Person.uidToName(uid))
+        repository.findById(PersonEntry.uidToName(uid))
             .map { it.toResponse() }
 
     @Transactional
     fun deletePerson(uid: String) {
-        repository.deleteById(Person.uidToName(uid))
+        repository.deleteById(PersonEntry.uidToName(uid))
     }
 }

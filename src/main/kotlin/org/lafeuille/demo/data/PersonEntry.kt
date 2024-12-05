@@ -9,9 +9,9 @@ import javax.naming.ldap.LdapName
 
 @Entry(
     objectClasses = ["inetOrgPerson", "naturalPerson", "organizationalPerson", "person", "top"],
-    base = Person.DN_BASE,
+    base = PersonEntry.DN_BASE,
 )
-class Person(
+class PersonEntry(
     @Id
     var dn: Name?,
     @Attribute(name = "uid")

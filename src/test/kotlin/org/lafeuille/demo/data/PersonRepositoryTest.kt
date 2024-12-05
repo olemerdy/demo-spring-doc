@@ -47,7 +47,7 @@ class PersonRepositoryTest(
 
     @Test
     fun find_by_id() {
-        val name = Person.uidToName("john.doe")
+        val name = PersonEntry.uidToName("john.doe")
         val personOpt = repository.findById(name)
 
         assertThat(personOpt).hasValueSatisfying {
