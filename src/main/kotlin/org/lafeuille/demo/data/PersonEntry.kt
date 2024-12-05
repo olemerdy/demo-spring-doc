@@ -1,5 +1,6 @@
 package org.lafeuille.demo.data
 
+import org.springframework.data.domain.Persistable
 import org.springframework.ldap.odm.annotations.Attribute
 import org.springframework.ldap.odm.annotations.DnAttribute
 import org.springframework.ldap.odm.annotations.Entry
@@ -23,8 +24,12 @@ class PersonEntry(
     @Attribute(name = "sn")
     var surname: String?,
     var givenName: String?,
-) {
+) : Persistable<Name> {
     constructor() : this(null, null, null, null, null, null)
+
+    override fun getId(): Name? = dn
+
+    override fun isNew(): Boolean = dn == null
 
     companion object {
         const val DN_BASE = "ou=people,dc=lafeuille,dc=org"
