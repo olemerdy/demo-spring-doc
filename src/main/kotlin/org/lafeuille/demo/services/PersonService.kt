@@ -20,7 +20,8 @@ class PersonService(
             .map { it.toResponse() }
 
     fun getPerson(uid: String): Optional<PersonResponse> =
-        repository.findById(PersonEntry.uidToName(uid))
+        repository
+            .findById(PersonEntry.uidToName(uid))
             .map { it.toResponse() }
 
     @Transactional

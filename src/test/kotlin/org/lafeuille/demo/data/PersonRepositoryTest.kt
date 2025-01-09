@@ -29,8 +29,7 @@ class PersonRepositoryTest(
                     assertThat(it.dn?.get(1)).isEqualTo("dc=lafeuille")
                     assertThat(it.dn?.get(2)).isEqualTo("ou=people")
                 },
-            )
-            .satisfies(
+            ).satisfies(
                 {
                     assertThat(it.dn?.get(3)).isEqualTo("uid=jane.smith")
                     assertThat(it.uid).isEqualTo("jane.smith")
@@ -39,8 +38,7 @@ class PersonRepositoryTest(
                     assertThat(it.givenName).isEqualTo("Jane")
                 },
                 Index.atIndex(0),
-            )
-            .satisfies(
+            ).satisfies(
                 {
                     assertThat(it.dn?.get(3)).isEqualTo("uid=john.doe")
                     assertThat(it.uid).isEqualTo("john.doe")

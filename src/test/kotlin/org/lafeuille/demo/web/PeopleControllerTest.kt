@@ -37,7 +37,8 @@ class PeopleControllerTest(
                 ),
             )
 
-        mockMvc.perform(get("/api/v1/people/{uid}", PersonFixtures.UID))
+        mockMvc
+            .perform(get("/api/v1/people/{uid}", PersonFixtures.UID))
             .andExpect(status().isOk)
             .andExpect(jsonPath("\$.identifier").value(PersonFixtures.UID))
             .andExpect(jsonPath("\$.name").value(PersonFixtures.FULL_NAME))
@@ -53,13 +54,15 @@ class PeopleControllerTest(
                 Optional.empty(),
             )
 
-        mockMvc.perform(get("/api/v1/people/{uid}", PersonFixtures.UID))
+        mockMvc
+            .perform(get("/api/v1/people/{uid}", PersonFixtures.UID))
             .andExpect(status().isNotFound)
     }
 
     @Test
     fun test_DELETE_people_uid_NO_CONTENT() {
-        mockMvc.perform(delete("/api/v1/people/{uid}", PersonFixtures.UID))
+        mockMvc
+            .perform(delete("/api/v1/people/{uid}", PersonFixtures.UID))
             .andExpect(status().isNoContent)
     }
 }

@@ -31,7 +31,8 @@ class PeopleController(
     fun readPerson(
         @PathVariable uid: String,
     ): ResponseEntity<PersonResponse> =
-        service.getPerson(uid)
+        service
+            .getPerson(uid)
             .map { ResponseEntity.ok(it) }
             .orElseGet { ResponseEntity.notFound().build() }
 
