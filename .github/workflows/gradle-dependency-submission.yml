@@ -22,6 +22,8 @@ jobs:
           java-version: '21'
           cache: 'gradle'
       - uses: gradle/actions/dependency-submission@v4
+        with:
+          dependency-graph-exclude-configurations: '.*[Tt]est(Compile|Runtime)Classpath'
 
   dependency-review:
     runs-on: ubuntu-latest
