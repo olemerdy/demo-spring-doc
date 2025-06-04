@@ -25,12 +25,16 @@ repositories {
     mavenCentral()
 }
 
+dependencyManagement {
+    imports {
+        mavenBom("org.springframework.cloud:spring-cloud-dependencies:${libs.versions.spring.cloud.asProvider().get()}")
+        mavenBom("io.cucumber:cucumber-bom:${libs.versions.cucumber.asProvider().get()}")
+    }
+}
+
 extra["snippetsDir"] = file("build/generated-snippets")
 
 dependencies {
-    api(platform(libs.spring.cloud.bom))
-    api(platform(libs.cucumber.bom))
-
     implementation("org.springframework.boot:spring-boot-starter-actuator")
     implementation("org.springframework.boot:spring-boot-starter-data-ldap")
     implementation("org.springframework.boot:spring-boot-starter-hateoas")
