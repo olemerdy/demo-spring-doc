@@ -32,7 +32,7 @@ dependencyManagement {
     }
 }
 
-extra["snippetsDir"] = file("build/generated-snippets")
+extra["snippetsDir"] = file("${layout.buildDirectory}/generated-snippets")
 
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-actuator")
@@ -44,7 +44,7 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     developmentOnly("org.springframework.boot:spring-boot-devtools")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
-    testImplementation("com.unboundid:unboundid-ldapsdk")
+    testAndDevelopmentOnly("com.unboundid:unboundid-ldapsdk")
     testImplementation("org.springframework.cloud:spring-cloud-starter-contract-verifier")
     testImplementation("org.springframework.restdocs:spring-restdocs-mockmvc")
     testImplementation(libs.mockito.kotlin)
