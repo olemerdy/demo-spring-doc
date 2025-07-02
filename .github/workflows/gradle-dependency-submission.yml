@@ -23,6 +23,7 @@ jobs:
           cache: 'gradle'
       - uses: gradle/actions/dependency-submission@v4
         with:
+          build-root-directory: backend-spring
           dependency-graph-exclude-configurations: '.*[Tt]est(Compile|Runtime)Classpath'
 
   dependency-review:
