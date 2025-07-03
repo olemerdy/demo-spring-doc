@@ -24,8 +24,8 @@ jobs:
       - uses: gradle/actions/setup-gradle@v4
         with:
           build-scan-publish: true
-          build-scan-terms-of-service-url: "https://gradle.com/terms-of-service"
-          build-scan-terms-of-service-agree: "yes"
+          build-scan-terms-of-use-url: "https://gradle.com/help/legal-terms-of-use"
+          build-scan-terms-of-use-agree: "yes"
       - run: gradle build
         working-directory: backend-spring
       - uses: actions/upload-artifact@v4
