@@ -35,6 +35,11 @@ dependencyManagement {
 extra["snippetsDir"] = file("${layout.buildDirectory}/generated-snippets")
 
 dependencies {
+    constraints {
+        api("commons-beanutils:commons-beanutils:1.11+") {
+            because("CVE-2025-48734")
+        }
+    }
     implementation("org.springframework.boot:spring-boot-starter-actuator")
     implementation("org.springframework.boot:spring-boot-starter-data-ldap")
     implementation("org.springframework.boot:spring-boot-starter-hateoas")
@@ -46,6 +51,7 @@ dependencies {
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testAndDevelopmentOnly("com.unboundid:unboundid-ldapsdk")
     testImplementation("org.springframework.cloud:spring-cloud-starter-contract-verifier")
+    testImplementation("org.springframework.restdocs:spring-restdocs-asciidoctor")
     testImplementation("org.springframework.restdocs:spring-restdocs-mockmvc")
     testImplementation(libs.mockito.kotlin)
 
