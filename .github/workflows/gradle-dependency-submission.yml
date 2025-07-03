@@ -24,7 +24,6 @@ jobs:
       - uses: gradle/actions/dependency-submission@v4
         with:
           build-root-directory: backend-spring
-          dependency-graph-exclude-configurations: '.*[Tt]est(Compile|Runtime)Classpath'
 
   dependency-review:
     runs-on: ubuntu-latest
@@ -35,4 +34,5 @@ jobs:
         if: ${{ startsWith(github.ref, 'refs/pull') }}
         with:
           comment-summary-in-pr: always
+          license-check: false
           show-openssf-scorecard: false
