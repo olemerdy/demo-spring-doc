@@ -38,6 +38,7 @@ dependencies {
     constraints {
         api("commons-beanutils:commons-beanutils:1.11+") // CVE-2025-48734
         api("org.jruby:jruby:9.4.12.1+") // CVE-2025-46551
+        api("org.jruby:jruby-complete:9.4.12.1+") // CVE-2025-46551
     }
     implementation("org.springframework.boot:spring-boot-starter-actuator")
     implementation("org.springframework.boot:spring-boot-starter-data-ldap")
