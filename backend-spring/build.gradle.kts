@@ -32,7 +32,7 @@ dependencyManagement {
     }
 }
 
-extra["snippetsDir"] = file("${layout.buildDirectory}/generated-snippets")
+extra["snippetsDir"] = layout.buildDirectory.file("generated-snippets")
 
 dependencies {
     constraints {
