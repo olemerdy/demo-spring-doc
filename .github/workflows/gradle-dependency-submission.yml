@@ -33,5 +33,3 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/dependency-review-action@v4
         if: ${{ startsWith(github.ref, 'refs/pull') }}
-        with:
-          comment-summary-in-pr: always
