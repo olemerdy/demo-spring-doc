@@ -28,3 +28,7 @@ jobs:
           build-scan-terms-of-service-agree: "yes"
       - run: gradle build
         working-directory: backend-spring
+      - uses: actions/upload-artifact@v4
+        with:
+          name: build-reports
+          path: backend-spring/build/reports/
