@@ -39,6 +39,9 @@ dependencies {
         api("commons-beanutils:commons-beanutils:1.11+") {
             because("CVE-2025-48734")
         }
+        api("org.apache.commons:commons-lang3:3.18.0+") {
+            because("CVE-2025-48924")
+        }
         api("org.jruby:jruby:9.4.12.1+") {
             because("CVE-2025-46551")
         }
