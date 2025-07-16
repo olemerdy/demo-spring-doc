@@ -36,10 +36,13 @@ extra["snippetsDir"] = layout.buildDirectory.file("generated-snippets")
 
 dependencies {
     constraints {
-        api("commons-beanutils:commons-beanutils:1.11+") {
+        implementation("commons-beanutils:commons-beanutils:1.11+") {
             because("CVE-2025-48734")
         }
-        api("org.jruby:jruby:9.4.12.1+") {
+        implementation("org.apache.commons:commons-lang3:3.18.0+") {
+            because("CVE-2025-48924")
+        }
+        implementation("org.jruby:jruby:9.4.12.1+") {
             because("CVE-2025-46551")
         }
     }
