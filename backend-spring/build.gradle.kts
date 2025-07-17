@@ -1,8 +1,8 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import org.springframework.boot.gradle.plugin.SpringBootPlugin
 
 plugins {
     alias(libs.plugins.spring.boot)
-    alias(libs.plugins.spring.dependency.management)
     alias(libs.plugins.spring.cloud.contract)
     alias(libs.plugins.asciidoctor)
     alias(libs.plugins.ben.manes.versions)
@@ -25,13 +25,6 @@ repositories {
     mavenCentral()
 }
 
-dependencyManagement {
-    imports {
-        mavenBom("org.springframework.cloud:spring-cloud-dependencies:${libs.versions.spring.cloud.asProvider().get()}")
-        mavenBom("io.cucumber:cucumber-bom:${libs.versions.cucumber.asProvider().get()}")
-    }
-}
-
 extra["snippetsDir"] = layout.buildDirectory.file("generated-snippets")
 
 dependencies {
@@ -46,6 +39,10 @@ dependencies {
             because("CVE-2025-46551")
         }
     }
+    implementation(platform(SpringBootPlugin.BOM_COORDINATES))
+    implementation(platform(libs.spring.cloud.bom))
+    implementation(platform(libs.cucumber.bom))
+
     implementation("org.springframework.boot:spring-boot-starter-actuator")
     implementation("org.springframework.boot:spring-boot-starter-data-ldap")
     implementation("org.springframework.boot:spring-boot-starter-hateoas")
