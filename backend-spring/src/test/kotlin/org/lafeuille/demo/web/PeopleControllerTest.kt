@@ -17,7 +17,7 @@ import java.util.Optional
 
 @WebMvcTest(controllers = [PeopleController::class])
 class PeopleControllerTest(
-    @Autowired val mockMvc: MockMvc,
+    @param:Autowired val mockMvc: MockMvc,
 ) {
     @MockitoBean
     lateinit var service: PersonService

@@ -9,7 +9,7 @@ import java.io.IOException
 
 @JsonTest
 class PersonResponseJsonTest(
-    @Autowired private val jacksonTester: JacksonTester<PersonResponse>,
+    @param:Autowired private val jacksonTester: JacksonTester<PersonResponse>,
 ) {
     @Test
     @Throws(IOException::class)

@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 @RequestMapping("api/v1/people")
 class PeopleController(
-    @Autowired val service: PersonService,
+    @param:Autowired val service: PersonService,
 ) {
     @GetMapping
     fun readPeople(

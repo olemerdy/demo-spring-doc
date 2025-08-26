@@ -15,7 +15,7 @@ import java.util.function.Consumer
     MethodOrderer.OrderAnnotation::class,
 )
 class PersonRepositoryTest(
-    @Autowired val repository: PersonRepository,
+    @param:Autowired val repository: PersonRepository,
 ) {
     @Test
     @Order(1)
