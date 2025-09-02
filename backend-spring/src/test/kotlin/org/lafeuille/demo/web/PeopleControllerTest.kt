@@ -40,11 +40,11 @@ class PeopleControllerTest(
         mockMvc
             .perform(get("/api/v1/people/{uid}", PersonFixtures.UID))
             .andExpect(status().isOk)
-            .andExpect(jsonPath("\$.identifier").value(PersonFixtures.UID))
-            .andExpect(jsonPath("\$.name").value(PersonFixtures.FULL_NAME))
-            .andExpect(jsonPath("\$.familyName").value(PersonFixtures.FAMILY_NAME))
-            .andExpect(jsonPath("\$.givenName").value(PersonFixtures.GIVEN_NAME))
-            .andExpect(jsonPath("\$.birthDate").value(PersonFixtures.BIRTH_DATE.toString()))
+            .andExpect(jsonPath("$.identifier").value(PersonFixtures.UID))
+            .andExpect(jsonPath("$.name").value(PersonFixtures.FULL_NAME))
+            .andExpect(jsonPath("$.familyName").value(PersonFixtures.FAMILY_NAME))
+            .andExpect(jsonPath("$.givenName").value(PersonFixtures.GIVEN_NAME))
+            .andExpect(jsonPath("$.birthDate").value(PersonFixtures.BIRTH_DATE.toString()))
     }
 
     @Test
