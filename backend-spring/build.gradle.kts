@@ -5,7 +5,6 @@ plugins {
     alias(libs.plugins.spring.dependency.management)
     alias(libs.plugins.spring.cloud.contract)
     alias(libs.plugins.asciidoctor)
-    alias(libs.plugins.ben.manes.versions)
     alias(libs.plugins.cucumber.companion)
     alias(libs.plugins.spotless)
     embeddedKotlin("jvm")
