@@ -24,45 +24,45 @@ class PeopleControllerTest(
 
     @Test
     fun test_GET_people_uid_OK() {
-        whenever(service.getPerson(PersonFixtures.UID))
+        whenever(service.getPerson(PersonFixtures.JohnDoe.UID))
             .thenReturn(
                 Optional.of(
                     PersonResponse(
-                        identifier = PersonFixtures.UID,
-                        name = PersonFixtures.FULL_NAME,
-                        birthDate = PersonFixtures.BIRTH_DATE,
-                        givenName = PersonFixtures.GIVEN_NAME,
-                        familyName = PersonFixtures.FAMILY_NAME,
+                        identifier = PersonFixtures.JohnDoe.UID,
+                        name = PersonFixtures.JohnDoe.FULL_NAME,
+                        birthDate = PersonFixtures.JohnDoe.BIRTH_DATE,
+                        givenName = PersonFixtures.JohnDoe.GIVEN_NAME,
+                        familyName = PersonFixtures.JohnDoe.FAMILY_NAME,
                     ),
                 ),
             )
 
         mockMvc
-            .perform(get("/api/v1/people/{uid}", PersonFixtures.UID))
+            .perform(get("/api/v1/people/{uid}", PersonFixtures.JohnDoe.UID))
             .andExpect(status().isOk)
-            .andExpect(jsonPath("$.identifier").value(PersonFixtures.UID))
-            .andExpect(jsonPath("$.name").value(PersonFixtures.FULL_NAME))
-            .andExpect(jsonPath("$.familyName").value(PersonFixtures.FAMILY_NAME))
-            .andExpect(jsonPath("$.givenName").value(PersonFixtures.GIVEN_NAME))
-            .andExpect(jsonPath("$.birthDate").value(PersonFixtures.BIRTH_DATE.toString()))
+            .andExpect(jsonPath("$.identifier").value(PersonFixtures.JohnDoe.UID))
+            .andExpect(jsonPath("$.name").value(PersonFixtures.JohnDoe.FULL_NAME))
+            .andExpect(jsonPath("$.familyName").value(PersonFixtures.JohnDoe.FAMILY_NAME))
+            .andExpect(jsonPath("$.givenName").value(PersonFixtures.JohnDoe.GIVEN_NAME))
+            .andExpect(jsonPath("$.birthDate").value(PersonFixtures.JohnDoe.BIRTH_DATE.toString()))
     }
 
     @Test
     fun test_GET_people_uid_NOT_FOUND() {
-        whenever(service.getPerson(PersonFixtures.UID))
+        whenever(service.getPerson(PersonFixtures.UnknownGuy.UID))
             .thenReturn(
                 Optional.empty(),
             )
 
         mockMvc
-            .perform(get("/api/v1/people/{uid}", PersonFixtures.UID))
+            .perform(get("/api/v1/people/{uid}", PersonFixtures.UnknownGuy.UID))
             .andExpect(status().isNotFound)
     }
 
     @Test
     fun test_DELETE_people_uid_NO_CONTENT() {
         mockMvc
-            .perform(delete("/api/v1/people/{uid}", PersonFixtures.UID))
+            .perform(delete("/api/v1/people/{uid}", PersonFixtures.JohnDoe.UID))
             .andExpect(status().isNoContent)
     }
 }

@@ -27,7 +27,7 @@ import org.springframework.cloud.contract.spec.internal.MediaTypes
             name 'GET people by UID not found'
             request {
                 method GET()
-                urlPath('/api/v1/people/john.smith') {
+                urlPath('/api/v1/people/unknown.guy') {
                 }
                 headers {
                     contentType(MediaTypes.APPLICATION_JSON)

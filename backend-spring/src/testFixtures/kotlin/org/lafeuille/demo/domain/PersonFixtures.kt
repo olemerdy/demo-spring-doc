@@ -4,15 +4,21 @@ import java.time.LocalDate
 import java.time.Month
 
 object PersonFixtures {
-    const val UID = "john.doe"
+    object JohnDoe {
+        const val UID = "john.doe"
 
-    const val GIVEN_NAME = "John"
+        const val GIVEN_NAME = "John"
 
-    const val FAMILY_NAME = "Doe"
+        const val FAMILY_NAME = "Doe"
 
-    const val FULL_NAME = "$GIVEN_NAME $FAMILY_NAME"
+        const val FULL_NAME = "$GIVEN_NAME $FAMILY_NAME"
 
-    val BIRTH_DATE: LocalDate by lazy { LocalDate.of(2001, Month.JANUARY, 1) }
+        val BIRTH_DATE: LocalDate by lazy { LocalDate.of(2001, Month.JANUARY, 1) }
+    }
+
+    object UnknownGuy {
+        const val UID = "unknown.guy"
+    }
 
     const val OTHER_GIVEN_NAME = "Jane"
 
