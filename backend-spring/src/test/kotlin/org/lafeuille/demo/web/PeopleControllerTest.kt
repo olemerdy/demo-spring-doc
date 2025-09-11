@@ -12,6 +12,10 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest
 import org.springframework.http.HttpStatus.NOT_FOUND
 import org.springframework.http.HttpStatus.NO_CONTENT
 import org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document
+import org.springframework.restdocs.payload.PayloadDocumentation.fieldWithPath
+import org.springframework.restdocs.payload.PayloadDocumentation.responseFields
+import org.springframework.restdocs.request.RequestDocumentation.parameterWithName
+import org.springframework.restdocs.request.RequestDocumentation.pathParameters
 import org.springframework.test.context.bean.override.mockito.MockitoBean
 import org.springframework.test.web.servlet.assertj.MockMvcTester
 import java.util.Optional
@@ -40,6 +44,27 @@ class PeopleControllerTest(
             )
 
         assertThat(mockMvc.get().uri("/api/v1/people/{uid}", PersonFixtures.JohnDoe.UID))
+            .apply(
+                document(
+                    "GET_people_uid_OK",
+                    pathParameters(
+                        parameterWithName("uid")
+                            .description("Unique identifier")
+                    ),
+                    responseFields(
+                        fieldWithPath("identifier")
+                            .description("Unique identifier"),
+                        fieldWithPath("name")
+                            .description("Full name"),
+                        fieldWithPath("birthDate")
+                            .description("Birth date, in ISO-8601 format"),
+                        fieldWithPath("familyName")
+                            .description("Family name"),
+                        fieldWithPath("givenName")
+                            .description("Given name")
+                    )
+                )
+            )
             .hasStatusOk()
             .bodyJson()
             .hasPathSatisfying("$.identifier") {
@@ -52,7 +77,7 @@ class PeopleControllerTest(
                 assertThat(it).isEqualTo(PersonFixtures.JohnDoe.GIVEN_NAME)
             }.hasPathSatisfying("$.birthDate") {
                 assertThat(it).isEqualTo(PersonFixtures.JohnDoe.BIRTH_DATE.toString())
-            }.apply { document("GET_people_uid_OK") }
+            }
     }
 
     @Test
