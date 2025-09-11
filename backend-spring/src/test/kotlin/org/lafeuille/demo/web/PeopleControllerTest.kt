@@ -38,7 +38,7 @@ class PeopleControllerTest(
                     "GET_people_uid_OK",
                     pathParameters(PersonDescriptors.Parameter.UID),
                     responseFields(PersonDescriptors.Fields.ALL),
-                )
+                ),
             ).hasStatusOk()
             .bodyJson()
             .hasPathSatisfying("$.identifier") {
@@ -66,7 +66,7 @@ class PeopleControllerTest(
                 document(
                     "GET_people_uid_NOT_FOUND",
                     pathParameters(PersonDescriptors.Parameter.UID),
-                )
+                ),
             ).hasStatus(NOT_FOUND)
     }
 
@@ -77,7 +77,7 @@ class PeopleControllerTest(
                 document(
                     "DELETE_people_uid_NO_CONTENT",
                     pathParameters(PersonDescriptors.Parameter.UID),
-                )
+                ),
             ).hasStatus(NO_CONTENT)
     }
 }
