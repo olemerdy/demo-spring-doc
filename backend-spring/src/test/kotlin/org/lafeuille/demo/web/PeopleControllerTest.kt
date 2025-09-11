@@ -33,13 +33,13 @@ class PeopleControllerTest(
             )
 
         assertThat(mockMvc.get().uri("/api/v1/people/{uid}", PersonFixtures.JohnDoe.UID))
-            .apply {
+            .apply(
                 document(
                     "GET_people_uid_OK",
                     pathParameters(PersonDescriptors.Parameter.UID),
                     responseFields(PersonDescriptors.Fields.ALL),
                 )
-            }.hasStatusOk()
+            ).hasStatusOk()
             .bodyJson()
             .hasPathSatisfying("$.identifier") {
                 assertThat(it).isEqualTo(PersonFixtures.JohnDoe.UID)
@@ -62,22 +62,22 @@ class PeopleControllerTest(
             )
 
         assertThat(mockMvc.get().uri("/api/v1/people/{uid}", PersonFixtures.UnknownGuy.UID))
-            .apply {
+            .apply(
                 document(
-                    "test_GET_people_uid_NOT_FOUND",
+                    "GET_people_uid_NOT_FOUND",
                     pathParameters(PersonDescriptors.Parameter.UID),
                 )
-            }.hasStatus(NOT_FOUND)
+            ).hasStatus(NOT_FOUND)
     }
 
     @Test
     fun test_DELETE_people_uid_NO_CONTENT() {
         assertThat(mockMvc.delete().uri("/api/v1/people/{uid}", PersonFixtures.JohnDoe.UID))
-            .apply {
+            .apply(
                 document(
-                    "test_DELETE_people_uid_NO_CONTENT",
+                    "DELETE_people_uid_NO_CONTENT",
                     pathParameters(PersonDescriptors.Parameter.UID),
                 )
-            }.hasStatus(NO_CONTENT)
+            ).hasStatus(NO_CONTENT)
     }
 }
