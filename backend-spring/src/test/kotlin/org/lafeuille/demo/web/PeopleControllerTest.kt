@@ -3,7 +3,6 @@ package org.lafeuille.demo.web
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.lafeuille.demo.domain.PersonFixtures
-import org.lafeuille.demo.domain.PersonResponse
 import org.lafeuille.demo.services.PersonService
 import org.mockito.kotlin.whenever
 import org.springframework.beans.factory.annotation.Autowired
@@ -32,15 +31,7 @@ class PeopleControllerTest(
     fun test_GET_people_uid_OK() {
         whenever(service.getPerson(PersonFixtures.JohnDoe.UID))
             .thenReturn(
-                Optional.of(
-                    PersonResponse(
-                        identifier = PersonFixtures.JohnDoe.UID,
-                        name = PersonFixtures.JohnDoe.FULL_NAME,
-                        birthDate = PersonFixtures.JohnDoe.BIRTH_DATE,
-                        givenName = PersonFixtures.JohnDoe.GIVEN_NAME,
-                        familyName = PersonFixtures.JohnDoe.FAMILY_NAME,
-                    ),
-                ),
+                Optional.of(PersonFixtures.JohnDoe.RESPONSE),
             )
 
         assertThat(mockMvc.get().uri("/api/v1/people/{uid}", PersonFixtures.JohnDoe.UID))
@@ -49,7 +40,7 @@ class PeopleControllerTest(
                     "GET_people_uid_OK",
                     pathParameters(
                         parameterWithName("uid")
-                            .description("Unique identifier")
+                            .description("Unique identifier"),
                     ),
                     responseFields(
                         fieldWithPath("identifier")
@@ -61,11 +52,10 @@ class PeopleControllerTest(
                         fieldWithPath("familyName")
                             .description("Family name"),
                         fieldWithPath("givenName")
-                            .description("Given name")
-                    )
-                )
-            )
-            .hasStatusOk()
+                            .description("Given name"),
+                    ),
+                ),
+            ).hasStatusOk()
             .bodyJson()
             .hasPathSatisfying("$.identifier") {
                 assertThat(it).isEqualTo(PersonFixtures.JohnDoe.UID)

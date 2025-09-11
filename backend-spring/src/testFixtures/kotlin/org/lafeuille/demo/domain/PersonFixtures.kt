@@ -14,6 +14,16 @@ object PersonFixtures {
         const val FULL_NAME = "$GIVEN_NAME $FAMILY_NAME"
 
         val BIRTH_DATE: LocalDate by lazy { LocalDate.of(2002, Month.FEBRUARY, 2) }
+
+        val RESPONSE: PersonResponse by lazy {
+            PersonResponse(
+                identifier = UID,
+                name = FULL_NAME,
+                givenName = GIVEN_NAME,
+                familyName = FAMILY_NAME,
+                birthDate = BIRTH_DATE,
+            )
+        }
     }
 
     object JohnDoe {
@@ -26,6 +36,16 @@ object PersonFixtures {
         const val FULL_NAME = "$GIVEN_NAME $FAMILY_NAME"
 
         val BIRTH_DATE: LocalDate by lazy { LocalDate.of(2001, Month.JANUARY, 1) }
+
+        val RESPONSE: PersonResponse by lazy {
+            PersonResponse(
+                identifier = UID,
+                name = FULL_NAME,
+                givenName = GIVEN_NAME,
+                familyName = FAMILY_NAME,
+                birthDate = BIRTH_DATE,
+            )
+        }
     }
 
     object UnknownGuy {
