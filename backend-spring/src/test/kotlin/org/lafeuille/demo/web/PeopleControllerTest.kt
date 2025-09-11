@@ -42,12 +42,17 @@ class PeopleControllerTest(
         assertThat(mockMvc.get().uri("/api/v1/people/{uid}", PersonFixtures.JohnDoe.UID))
             .hasStatusOk()
             .bodyJson()
-            .hasPath("$.identifier").isEqualTo(PersonFixtures.JohnDoe.UID)
-            .hasPath("$.name").isEqualTo(PersonFixtures.JohnDoe.FULL_NAME)
-            .hasPath("$.familyName").isEqualTo(PersonFixtures.JohnDoe.FAMILY_NAME)
-            .hasPath("$.givenName").isEqualTo(PersonFixtures.JohnDoe.GIVEN_NAME)
-            .hasPath("$.birthDate").isEqualTo(PersonFixtures.JohnDoe.BIRTH_DATE.toString())
-            .apply { document("GET_people_uid_OK") }
+            .hasPathSatisfying("$.identifier") {
+                assertThat(it).isEqualTo(PersonFixtures.JohnDoe.UID)
+            }.hasPathSatisfying("$.name") {
+                assertThat(it).isEqualTo(PersonFixtures.JohnDoe.FULL_NAME)
+            }.hasPathSatisfying("$.familyName") {
+                assertThat(it).isEqualTo(PersonFixtures.JohnDoe.FAMILY_NAME)
+            }.hasPathSatisfying("$.givenName") {
+                assertThat(it).isEqualTo(PersonFixtures.JohnDoe.GIVEN_NAME)
+            }.hasPathSatisfying("$.birthDate") {
+                assertThat(it).isEqualTo(PersonFixtures.JohnDoe.BIRTH_DATE.toString())
+            }.apply { document("GET_people_uid_OK") }
     }
 
     @Test
