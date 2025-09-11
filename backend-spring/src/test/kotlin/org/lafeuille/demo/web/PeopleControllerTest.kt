@@ -11,9 +11,7 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest
 import org.springframework.http.HttpStatus.NOT_FOUND
 import org.springframework.http.HttpStatus.NO_CONTENT
 import org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document
-import org.springframework.restdocs.payload.PayloadDocumentation.fieldWithPath
 import org.springframework.restdocs.payload.PayloadDocumentation.responseFields
-import org.springframework.restdocs.request.RequestDocumentation.parameterWithName
 import org.springframework.restdocs.request.RequestDocumentation.pathParameters
 import org.springframework.test.context.bean.override.mockito.MockitoBean
 import org.springframework.test.web.servlet.assertj.MockMvcTester
@@ -35,27 +33,13 @@ class PeopleControllerTest(
             )
 
         assertThat(mockMvc.get().uri("/api/v1/people/{uid}", PersonFixtures.JohnDoe.UID))
-            .apply(
+            .apply {
                 document(
                     "GET_people_uid_OK",
-                    pathParameters(
-                        parameterWithName("uid")
-                            .description("Unique identifier"),
-                    ),
-                    responseFields(
-                        fieldWithPath("identifier")
-                            .description("Unique identifier"),
-                        fieldWithPath("name")
-                            .description("Full name"),
-                        fieldWithPath("birthDate")
-                            .description("Birth date, in ISO-8601 format"),
-                        fieldWithPath("familyName")
-                            .description("Family name"),
-                        fieldWithPath("givenName")
-                            .description("Given name"),
-                    ),
-                ),
-            ).hasStatusOk()
+                    pathParameters(PersonDescriptors.Parameter.UID),
+                    responseFields(PersonDescriptors.Fields.ALL),
+                )
+            }.hasStatusOk()
             .bodyJson()
             .hasPathSatisfying("$.identifier") {
                 assertThat(it).isEqualTo(PersonFixtures.JohnDoe.UID)
@@ -78,14 +62,22 @@ class PeopleControllerTest(
             )
 
         assertThat(mockMvc.get().uri("/api/v1/people/{uid}", PersonFixtures.UnknownGuy.UID))
-            .hasStatus(NOT_FOUND)
-            .apply { document("test_GET_people_uid_NOT_FOUND") }
+            .apply {
+                document(
+                    "test_GET_people_uid_NOT_FOUND",
+                    pathParameters(PersonDescriptors.Parameter.UID),
+                )
+            }.hasStatus(NOT_FOUND)
     }
 
     @Test
     fun test_DELETE_people_uid_NO_CONTENT() {
         assertThat(mockMvc.delete().uri("/api/v1/people/{uid}", PersonFixtures.JohnDoe.UID))
-            .hasStatus(NO_CONTENT)
-            .apply { document("test_DELETE_people_uid_NO_CONTENT") }
+            .apply {
+                document(
+                    "test_DELETE_people_uid_NO_CONTENT",
+                    pathParameters(PersonDescriptors.Parameter.UID),
+                )
+            }.hasStatus(NO_CONTENT)
     }
 }
