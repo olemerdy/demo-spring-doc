@@ -17,7 +17,6 @@ import org.springframework.http.HttpStatus.NOT_FOUND
 import org.springframework.http.HttpStatus.NO_CONTENT
 import org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document
 import org.springframework.restdocs.payload.PayloadDocumentation.responseFields
-import org.springframework.restdocs.request.RequestDocumentation.parameterWithName
 import org.springframework.restdocs.request.RequestDocumentation.pathParameters
 import org.springframework.restdocs.request.RequestDocumentation.queryParameters
 import org.springframework.test.context.bean.override.mockito.MockitoBean
@@ -83,17 +82,7 @@ class PeopleControllerTest(
         ).apply(
             document(
                 "GET_people_not_empty_OK",
-                queryParameters(
-                    parameterWithName("page")
-                        .description("Page number, starting at 0")
-                        .optional(),
-                    parameterWithName("size")
-                        .description("Page size to be returned"),
-                    parameterWithName("sort")
-                        .description(
-                            "Property name and and optional direction (asc or desc) separated by a comma. Multiple values possible",
-                        ),
-                ),
+                queryParameters(PageDescriptors.Parameters.ALL),
             ),
         ).hasStatusOk()
             .bodyJson()
