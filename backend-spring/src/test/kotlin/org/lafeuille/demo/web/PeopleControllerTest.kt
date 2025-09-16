@@ -24,7 +24,7 @@ import org.springframework.test.web.servlet.assertj.MockMvcTester
 import java.util.Optional
 
 @WebMvcTest(controllers = [PeopleController::class])
-@AutoConfigureRestDocs(uriHost = "lafeuille.org")
+@AutoConfigureRestDocs(uriScheme = "https", uriHost = "lafeuille.org", uriPort = 443)
 class PeopleControllerTest(
     @param:Autowired val mockMvc: MockMvcTester,
 ) {
