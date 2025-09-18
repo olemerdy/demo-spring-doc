@@ -22,17 +22,21 @@ object PersonDescriptors {
             fieldWithPath("name")
                 .description("Full name")
         }
-        val BIRTHDATE: FieldDescriptor by lazy {
-            fieldWithPath("birthDate")
-                .description("Birth date, in ISO-8601 format")
+        val GIVEN_NAME: FieldDescriptor by lazy {
+            fieldWithPath("givenName")
+                .description("Given name")
         }
         val FAMILY_NAME: FieldDescriptor by lazy {
             fieldWithPath("familyName")
                 .description("Family name")
         }
-        val GIVEN_NAME: FieldDescriptor by lazy {
-            fieldWithPath("givenName")
-                .description("Given name")
+        val BIRTHDATE: FieldDescriptor by lazy {
+            fieldWithPath("birthDate")
+                .description("Birth date, in ISO-8601 format")
+        }
+        val DEATHDATE: FieldDescriptor by lazy {
+            fieldWithPath("deathDate")
+                .description("Death date, in ISO-8601 format, can be null")
         }
     }
 
@@ -41,9 +45,10 @@ object PersonDescriptors {
             listOf(
                 Field.IDENTIFIER,
                 Field.NAME,
-                Field.BIRTHDATE,
-                Field.FAMILY_NAME,
                 Field.GIVEN_NAME,
+                Field.FAMILY_NAME,
+                Field.BIRTHDATE,
+                Field.DEATHDATE,
             )
         }
     }

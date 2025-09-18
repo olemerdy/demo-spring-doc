@@ -8,7 +8,8 @@ import java.time.LocalDate
 data class PersonResponse(
     val identifier: String,
     val name: String,
-    val birthDate: LocalDate,
-    val familyName: String,
     val givenName: String,
+    val familyName: String,
+    val birthDate: LocalDate,
+    val deathDate: LocalDate? = null,
 )

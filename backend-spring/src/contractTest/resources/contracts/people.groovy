@@ -1,15 +1,17 @@
 package contracts
 
-import org.lafeuille.demo.fixtures.person.*
+import org.lafeuille.demo.fixtures.PersonFixtures
 import org.springframework.cloud.contract.spec.Contract
 import org.springframework.cloud.contract.spec.internal.MediaTypes
+
+import static org.lafeuille.demo.fixtures.PersonFixtures.INSTANCE as People
 
 [
         Contract.make {
             name 'GET people by UID found'
             request {
                 method GET()
-                urlPath("/api/v1/people/${JohnSmith.UID}") {
+                urlPath("/api/v1/people/${People.johnSmith.uid}") {
                 }
                 headers {
                     contentType(MediaTypes.APPLICATION_JSON)
@@ -28,7 +30,7 @@ import org.springframework.cloud.contract.spec.internal.MediaTypes
             name 'GET people by UID not found'
             request {
                 method GET()
-                urlPath('/api/v1/people/unknown.guy') {
+                urlPath("/api/v1/people/${PersonFixtures.UnknownGuy.UID}") {
                 }
                 headers {
                     contentType(MediaTypes.APPLICATION_JSON)
@@ -43,7 +45,7 @@ import org.springframework.cloud.contract.spec.internal.MediaTypes
             name 'DELETE people by UID'
             request {
                 method DELETE()
-                urlPath('/api/v1/people/john.smith') {
+                urlPath("/api/v1/people/${People.johnSmith.uid}") {
                 }
                 headers {
                     contentType(MediaTypes.APPLICATION_JSON)

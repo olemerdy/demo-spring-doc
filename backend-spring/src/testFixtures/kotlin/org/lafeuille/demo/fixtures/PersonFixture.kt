@@ -1,12 +1,33 @@
-package org.lafeuille.demo.fixtures.person
+package org.lafeuille.demo.fixtures
 
 import org.lafeuille.demo.domain.PersonResponse
 import java.time.LocalDate
-import java.time.Month
+
+data class PersonFixture(
+    val givenName: String,
+    val familyName: String,
+    val birthDate: LocalDate,
+    val deathDate: LocalDate? = null,
+) {
+    val uid: String
+        get() = "${givenName.lowercase()}.${familyName.lowercase()}"
+    val fullName: String
+        get() = "$givenName $familyName"
+
+    fun toResponse() =
+        PersonResponse(
+            identifier = uid,
+            name = fullName,
+            givenName = givenName,
+            familyName = familyName,
+            birthDate = birthDate,
+            deathDate = deathDate,
+        )
+}
 
 // United States (most common names, 1990 census)
 // https://en.wikipedia.org/wiki/List_of_most_popular_given_names#Male_names_2
-object MostCommonMaleGivenNames {
+object CommonMaleGivenNames {
     const val JAMES = "James"
     const val JOHN = "John"
     const val ROBERT = "Robert"
@@ -21,7 +42,7 @@ object MostCommonMaleGivenNames {
 
 // United States (most common names, 1990 census)
 // https://en.wikipedia.org/wiki/List_of_most_popular_given_names#Female_names_2
-object MostCommonFemaleGivenNames {
+object CommonFemaleGivenNames {
     const val MARY = "Mary"
     const val PATRICIA = "Patricia"
     const val LINDA = "Linda"
@@ -35,7 +56,7 @@ object MostCommonFemaleGivenNames {
 }
 
 // https://en.wikipedia.org/wiki/Lists_of_most_common_surnames_in_North_American_countries#United_States
-object MostCommonSurnames {
+object CommonSurnames {
     const val SMITH = "Smith"
     const val JOHNSON = "Johnson"
     const val WILLIAMS = "Williams"
@@ -46,48 +67,4 @@ object MostCommonSurnames {
     const val DAVIS = "Davis"
     const val RODRIGUEZ = "Rodriguez"
     const val MARTINEZ = "Martinez"
-}
-
-object JohnSmith {
-    const val UID = "john.smith"
-    const val GIVEN_NAME = MostCommonMaleGivenNames.JOHN
-    const val FAMILY_NAME = MostCommonSurnames.SMITH
-    const val FULL_NAME = "$GIVEN_NAME $FAMILY_NAME"
-    val BIRTH_DATE: LocalDate by lazy { LocalDate.of(2001, Month.JANUARY, 1) }
-
-    val RESPONSE: PersonResponse by lazy {
-        PersonResponse(
-            identifier = UID,
-            name = FULL_NAME,
-            givenName = GIVEN_NAME,
-            familyName = FAMILY_NAME,
-            birthDate = BIRTH_DATE,
-        )
-    }
-}
-
-object JaneSmith {
-    const val UID = "jane.smith"
-
-    const val GIVEN_NAME = "Jane"
-
-    const val FAMILY_NAME = MostCommonSurnames.SMITH
-
-    const val FULL_NAME = "$GIVEN_NAME $FAMILY_NAME"
-
-    val BIRTH_DATE: LocalDate by lazy { LocalDate.of(2002, Month.FEBRUARY, 2) }
-
-    val RESPONSE: PersonResponse by lazy {
-        PersonResponse(
-            identifier = UID,
-            name = FULL_NAME,
-            givenName = GIVEN_NAME,
-            familyName = FAMILY_NAME,
-            birthDate = BIRTH_DATE,
-        )
-    }
-}
-
-object UnknownGuy {
-    const val UID = "unknown.guy"
 }

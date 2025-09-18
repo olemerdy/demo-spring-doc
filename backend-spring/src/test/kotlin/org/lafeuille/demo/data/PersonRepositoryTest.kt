@@ -6,8 +6,8 @@ import org.junit.jupiter.api.MethodOrderer
 import org.junit.jupiter.api.Order
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestMethodOrder
-import org.lafeuille.demo.fixtures.person.JohnSmith
-import org.lafeuille.demo.fixtures.person.MostCommonSurnames
+import org.lafeuille.demo.fixtures.CommonSurnames
+import org.lafeuille.demo.fixtures.PersonFixtures.johnSmith
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.data.ldap.DataLdapTest
 import java.util.function.Consumer
@@ -42,11 +42,11 @@ class PersonRepositoryTest(
                 Index.atIndex(0),
             ).satisfies(
                 {
-                    assertThat(it.dn?.get(3)).isEqualTo("uid=${JohnSmith.UID}")
-                    assertThat(it.uid).isEqualTo(JohnSmith.UID)
-                    assertThat(it.commonName).isEqualTo(JohnSmith.FULL_NAME)
-                    assertThat(it.surname).isEqualTo(JohnSmith.FAMILY_NAME)
-                    assertThat(it.givenName).isEqualTo(JohnSmith.GIVEN_NAME)
+                    assertThat(it.dn?.get(3)).isEqualTo("uid=${johnSmith.uid}")
+                    assertThat(it.uid).isEqualTo(johnSmith.uid)
+                    assertThat(it.commonName).isEqualTo(johnSmith.fullName)
+                    assertThat(it.surname).isEqualTo(johnSmith.familyName)
+                    assertThat(it.givenName).isEqualTo(johnSmith.givenName)
                 },
                 Index.atIndex(1),
             )
@@ -55,19 +55,19 @@ class PersonRepositoryTest(
     @Test
     @Order(2)
     fun find_by_id() {
-        val name = PersonEntry.uidToName(JohnSmith.UID)
+        val name = PersonEntry.uidToName(johnSmith.uid)
         val personOpt = repository.findById(name)
 
         assertThat(personOpt).hasValueSatisfying {
             assertThat(it.dn?.get(0)).isEqualTo("dc=org")
             assertThat(it.dn?.get(1)).isEqualTo("dc=lafeuille")
             assertThat(it.dn?.get(2)).isEqualTo("ou=people")
-            assertThat(it.dn?.get(3)).isEqualTo("uid=${JohnSmith.UID}")
+            assertThat(it.dn?.get(3)).isEqualTo("uid=${johnSmith.uid}")
 
-            assertThat(it.uid).isEqualTo(JohnSmith.UID)
-            assertThat(it.commonName).isEqualTo(JohnSmith.FULL_NAME)
-            assertThat(it.surname).isEqualTo(JohnSmith.FAMILY_NAME)
-            assertThat(it.givenName).isEqualTo(JohnSmith.GIVEN_NAME)
+            assertThat(it.uid).isEqualTo(johnSmith.uid)
+            assertThat(it.commonName).isEqualTo(johnSmith.fullName)
+            assertThat(it.surname).isEqualTo(johnSmith.familyName)
+            assertThat(it.givenName).isEqualTo(johnSmith.givenName)
         }
     }
 
@@ -108,14 +108,14 @@ class PersonRepositoryTest(
     @Test
     @Order(4) // Ordering because we modify an entry that is checked by another test. Change for distinct dataset
     fun update() {
-        val name = PersonEntry.uidToName(JohnSmith.UID)
+        val name = PersonEntry.uidToName(johnSmith.uid)
         val personOpt = repository.findById(name)
 
         assertThat(personOpt).isNotEmpty
 
         val person = personOpt.get()
-        person.surname = MostCommonSurnames.JONES
-        person.commonName = "${JohnSmith.GIVEN_NAME} ${MostCommonSurnames.JONES}"
+        person.surname = CommonSurnames.JONES
+        person.commonName = "${johnSmith.givenName} ${CommonSurnames.JONES}"
 
         val saved = repository.save(person)
         assertThat(saved).satisfies(
@@ -125,13 +125,13 @@ class PersonRepositoryTest(
                 assertThat(it.dn?.get(0)).isEqualTo("dc=org")
                 assertThat(it.dn?.get(1)).isEqualTo("dc=lafeuille")
                 assertThat(it.dn?.get(2)).isEqualTo("ou=people")
-                assertThat(it.dn?.get(3)).isEqualTo("uid=${JohnSmith.UID}")
+                assertThat(it.dn?.get(3)).isEqualTo("uid=${johnSmith.uid}")
 
-                assertThat(it.uid).isEqualTo(JohnSmith.UID)
-                assertThat(it.commonName).isEqualTo("${JohnSmith.GIVEN_NAME} ${MostCommonSurnames.JONES}")
+                assertThat(it.uid).isEqualTo(johnSmith.uid)
+                assertThat(it.commonName).isEqualTo("${johnSmith.givenName} ${CommonSurnames.JONES}")
                 assertThat(it.dateOfBirth).isEqualTo("2001010100Z")
-                assertThat(it.surname).isEqualTo(MostCommonSurnames.JONES)
-                assertThat(it.givenName).isEqualTo(JohnSmith.GIVEN_NAME)
+                assertThat(it.surname).isEqualTo(CommonSurnames.JONES)
+                assertThat(it.givenName).isEqualTo(johnSmith.givenName)
             },
         )
     }
