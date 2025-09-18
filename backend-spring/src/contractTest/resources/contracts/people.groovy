@@ -1,5 +1,6 @@
 package contracts
 
+import org.lafeuille.demo.domain.PersonFixtures
 import org.springframework.cloud.contract.spec.Contract
 import org.springframework.cloud.contract.spec.internal.MediaTypes
 
@@ -8,7 +9,7 @@ import org.springframework.cloud.contract.spec.internal.MediaTypes
             name 'GET people by UID found'
             request {
                 method GET()
-                urlPath('/api/v1/people/john.doe') {
+                urlPath("/api/v1/people/${PersonFixtures.JohnSmith.UID}") {
                 }
                 headers {
                     contentType(MediaTypes.APPLICATION_JSON)
@@ -42,7 +43,7 @@ import org.springframework.cloud.contract.spec.internal.MediaTypes
             name 'DELETE people by UID'
             request {
                 method DELETE()
-                urlPath('/api/v1/people/john.doe') {
+                urlPath('/api/v1/people/john.smith') {
                 }
                 headers {
                     contentType(MediaTypes.APPLICATION_JSON)

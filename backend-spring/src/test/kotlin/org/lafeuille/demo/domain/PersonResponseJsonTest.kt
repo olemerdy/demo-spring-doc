@@ -14,14 +14,14 @@ class PersonResponseJsonTest(
     @Test
     @Throws(IOException::class)
     fun serialize() {
-        val jsonContent = jacksonTester.write(PersonFixtures.JohnDoe.RESPONSE)
-        assertThat(jsonContent).isEqualToJson("PersonResponse.JohnDoe.json")
+        val jsonContent = jacksonTester.write(PersonFixtures.JohnSmith.RESPONSE)
+        assertThat(jsonContent).isEqualToJson("PersonResponse.JohnSmith.json")
     }
 
     @Test
     @Throws(IOException::class)
     fun deserialize() {
-        val personResponse = jacksonTester.readObject("PersonResponse.JohnDoe.json")
-        assertThat(personResponse).isEqualTo(PersonFixtures.JohnDoe.RESPONSE)
+        val personResponse = jacksonTester.readObject("PersonResponse.JohnSmith.json")
+        assertThat(personResponse).isEqualTo(PersonFixtures.JohnSmith.RESPONSE)
     }
 }

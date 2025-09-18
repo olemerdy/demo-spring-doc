@@ -63,7 +63,7 @@ class PeopleControllerTest(
             .thenReturn(
                 PageImpl(
                     listOf(
-                        PersonFixtures.JohnDoe.RESPONSE,
+                        PersonFixtures.JohnSmith.RESPONSE,
                         PersonFixtures.JaneSmith.RESPONSE,
                     ),
                     pageable,
@@ -90,12 +90,12 @@ class PeopleControllerTest(
 
     @Test
     fun test_GET_people_uid_OK() {
-        whenever(service.getPerson(PersonFixtures.JohnDoe.UID))
+        whenever(service.getPerson(PersonFixtures.JohnSmith.UID))
             .thenReturn(
-                Optional.of(PersonFixtures.JohnDoe.RESPONSE),
+                Optional.of(PersonFixtures.JohnSmith.RESPONSE),
             )
 
-        assertThat(mockMvc.get().uri("/api/v1/people/{uid}", PersonFixtures.JohnDoe.UID))
+        assertThat(mockMvc.get().uri("/api/v1/people/{uid}", PersonFixtures.JohnSmith.UID))
             .apply(
                 document(
                     "GET_people_uid_OK",
@@ -105,15 +105,15 @@ class PeopleControllerTest(
             ).hasStatusOk()
             .bodyJson()
             .hasPathSatisfying("$.identifier") {
-                assertThat(it).isEqualTo(PersonFixtures.JohnDoe.UID)
+                assertThat(it).isEqualTo(PersonFixtures.JohnSmith.UID)
             }.hasPathSatisfying("$.name") {
-                assertThat(it).isEqualTo(PersonFixtures.JohnDoe.FULL_NAME)
+                assertThat(it).isEqualTo(PersonFixtures.JohnSmith.FULL_NAME)
             }.hasPathSatisfying("$.familyName") {
-                assertThat(it).isEqualTo(PersonFixtures.JohnDoe.FAMILY_NAME)
+                assertThat(it).isEqualTo(PersonFixtures.JohnSmith.FAMILY_NAME)
             }.hasPathSatisfying("$.givenName") {
-                assertThat(it).isEqualTo(PersonFixtures.JohnDoe.GIVEN_NAME)
+                assertThat(it).isEqualTo(PersonFixtures.JohnSmith.GIVEN_NAME)
             }.hasPathSatisfying("$.birthDate") {
-                assertThat(it).isEqualTo(PersonFixtures.JohnDoe.BIRTH_DATE.toString())
+                assertThat(it).isEqualTo(PersonFixtures.JohnSmith.BIRTH_DATE.toString())
             }
     }
 
@@ -135,7 +135,7 @@ class PeopleControllerTest(
 
     @Test
     fun test_DELETE_people_uid_NO_CONTENT() {
-        assertThat(mockMvc.delete().uri("/api/v1/people/{uid}", PersonFixtures.JohnDoe.UID))
+        assertThat(mockMvc.delete().uri("/api/v1/people/{uid}", PersonFixtures.JohnSmith.UID))
             .apply(
                 document(
                     "DELETE_people_uid_NO_CONTENT",

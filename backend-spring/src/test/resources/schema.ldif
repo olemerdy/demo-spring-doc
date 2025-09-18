@@ -16,15 +16,15 @@ objectClass: organizationalUnit
 ou: people
 
 # Create People
-dn: uid=john.doe,ou=people,dc=lafeuille,dc=org
+dn: uid=john.smith,ou=people,dc=lafeuille,dc=org
 objectClass: top
 objectClass: person
 objectClass: inetOrgPerson
 objectClass: naturalPerson
 objectClass: organizationalPerson
-uid: john.doe
-cn: John Doe
-sn: Doe
+uid: john.smith
+cn: John Smith
+sn: Smith
 givenName: John
 dateOfBirth: 2001010100Z
 
