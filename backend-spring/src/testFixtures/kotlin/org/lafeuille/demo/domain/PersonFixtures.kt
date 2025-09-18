@@ -4,7 +4,6 @@ import java.time.LocalDate
 import java.time.Month
 
 object PersonFixtures {
-
     // United States (most common names, 1990 census)
     // https://en.wikipedia.org/wiki/List_of_most_popular_given_names#Male_names_2
     object MostCommonMaleGivenNames {
