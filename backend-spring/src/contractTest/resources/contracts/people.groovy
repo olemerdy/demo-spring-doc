@@ -1,6 +1,6 @@
 package contracts
 
-import org.lafeuille.demo.domain.PersonFixtures
+import org.lafeuille.demo.fixtures.person.*
 import org.springframework.cloud.contract.spec.Contract
 import org.springframework.cloud.contract.spec.internal.MediaTypes
 
@@ -9,7 +9,7 @@ import org.springframework.cloud.contract.spec.internal.MediaTypes
             name 'GET people by UID found'
             request {
                 method GET()
-                urlPath("/api/v1/people/${PersonFixtures.JohnSmith.UID}") {
+                urlPath("/api/v1/people/${JohnSmith.UID}") {
                 }
                 headers {
                     contentType(MediaTypes.APPLICATION_JSON)

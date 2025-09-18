@@ -2,7 +2,9 @@ package org.lafeuille.demo.web
 
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
-import org.lafeuille.demo.domain.PersonFixtures
+import org.lafeuille.demo.fixtures.person.JaneSmith
+import org.lafeuille.demo.fixtures.person.JohnSmith
+import org.lafeuille.demo.fixtures.person.UnknownGuy
 import org.lafeuille.demo.services.PersonService
 import org.mockito.kotlin.whenever
 import org.springframework.beans.factory.annotation.Autowired
@@ -63,8 +65,8 @@ class PeopleControllerTest(
             .thenReturn(
                 PageImpl(
                     listOf(
-                        PersonFixtures.JohnSmith.RESPONSE,
-                        PersonFixtures.JaneSmith.RESPONSE,
+                        JohnSmith.RESPONSE,
+                        JaneSmith.RESPONSE,
                     ),
                     pageable,
                     2,
@@ -90,12 +92,12 @@ class PeopleControllerTest(
 
     @Test
     fun test_GET_people_uid_OK() {
-        whenever(service.getPerson(PersonFixtures.JohnSmith.UID))
+        whenever(service.getPerson(JohnSmith.UID))
             .thenReturn(
-                Optional.of(PersonFixtures.JohnSmith.RESPONSE),
+                Optional.of(JohnSmith.RESPONSE),
             )
 
-        assertThat(mockMvc.get().uri("/api/v1/people/{uid}", PersonFixtures.JohnSmith.UID))
+        assertThat(mockMvc.get().uri("/api/v1/people/{uid}", JohnSmith.UID))
             .apply(
                 document(
                     "GET_people_uid_OK",
@@ -105,26 +107,26 @@ class PeopleControllerTest(
             ).hasStatusOk()
             .bodyJson()
             .hasPathSatisfying("$.identifier") {
-                assertThat(it).isEqualTo(PersonFixtures.JohnSmith.UID)
+                assertThat(it).isEqualTo(JohnSmith.UID)
             }.hasPathSatisfying("$.name") {
-                assertThat(it).isEqualTo(PersonFixtures.JohnSmith.FULL_NAME)
+                assertThat(it).isEqualTo(JohnSmith.FULL_NAME)
             }.hasPathSatisfying("$.familyName") {
-                assertThat(it).isEqualTo(PersonFixtures.JohnSmith.FAMILY_NAME)
+                assertThat(it).isEqualTo(JohnSmith.FAMILY_NAME)
             }.hasPathSatisfying("$.givenName") {
-                assertThat(it).isEqualTo(PersonFixtures.JohnSmith.GIVEN_NAME)
+                assertThat(it).isEqualTo(JohnSmith.GIVEN_NAME)
             }.hasPathSatisfying("$.birthDate") {
-                assertThat(it).isEqualTo(PersonFixtures.JohnSmith.BIRTH_DATE.toString())
+                assertThat(it).isEqualTo(JohnSmith.BIRTH_DATE.toString())
             }
     }
 
     @Test
     fun test_GET_people_uid_NOT_FOUND() {
-        whenever(service.getPerson(PersonFixtures.UnknownGuy.UID))
+        whenever(service.getPerson(UnknownGuy.UID))
             .thenReturn(
                 Optional.empty(),
             )
 
-        assertThat(mockMvc.get().uri("/api/v1/people/{uid}", PersonFixtures.UnknownGuy.UID))
+        assertThat(mockMvc.get().uri("/api/v1/people/{uid}", UnknownGuy.UID))
             .apply(
                 document(
                     "GET_people_uid_NOT_FOUND",
@@ -135,7 +137,7 @@ class PeopleControllerTest(
 
     @Test
     fun test_DELETE_people_uid_NO_CONTENT() {
-        assertThat(mockMvc.delete().uri("/api/v1/people/{uid}", PersonFixtures.JohnSmith.UID))
+        assertThat(mockMvc.delete().uri("/api/v1/people/{uid}", JohnSmith.UID))
             .apply(
                 document(
                     "DELETE_people_uid_NO_CONTENT",
