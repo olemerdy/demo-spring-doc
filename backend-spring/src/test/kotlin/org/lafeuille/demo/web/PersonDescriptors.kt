@@ -34,10 +34,6 @@ object PersonDescriptors {
             fieldWithPath("birthDate")
                 .description("Birth date, in ISO-8601 format")
         }
-        val DEATHDATE: FieldDescriptor by lazy {
-            fieldWithPath("deathDate")
-                .description("Death date, in ISO-8601 format, can be null")
-        }
     }
 
     object Fields {
@@ -48,7 +44,6 @@ object PersonDescriptors {
                 Field.GIVEN_NAME,
                 Field.FAMILY_NAME,
                 Field.BIRTHDATE,
-                Field.DEATHDATE,
             )
         }
     }

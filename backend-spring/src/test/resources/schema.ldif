@@ -16,6 +16,30 @@ objectClass: organizationalUnit
 ou: people
 
 # Create People
+dn: uid=charles.brown,ou=people,dc=lafeuille,dc=org
+objectClass: top
+objectClass: person
+objectClass: inetOrgPerson
+objectClass: naturalPerson
+objectClass: organizationalPerson
+uid: charles.brown
+cn: Charles Brown
+sn: Brown
+givenName: Charles
+dateOfBirth: 1950103000Z
+
+dn: uid=james.brown,ou=people,dc=lafeuille,dc=org
+objectClass: top
+objectClass: person
+objectClass: inetOrgPerson
+objectClass: naturalPerson
+objectClass: organizationalPerson
+uid: james.brown
+cn: James Brown
+sn: Brown
+givenName: James
+dateOfBirth: 1933050300Z
+
 dn: uid=john.smith,ou=people,dc=lafeuille,dc=org
 objectClass: top
 objectClass: person
@@ -26,19 +50,7 @@ uid: john.smith
 cn: John Smith
 sn: Smith
 givenName: John
-dateOfBirth: 2001010100Z
-
-dn: uid=jane.smith,ou=people,dc=lafeuille,dc=org
-objectClass: top
-objectClass: person
-objectClass: inetOrgPerson
-objectClass: naturalPerson
-objectClass: organizationalPerson
-uid: jane.smith
-cn: Jane Smith
-sn: Smith
-givenName: Jane
-dateOfBirth: 2002020200Z
+dateOfBirth: 1580010600Z
 
 # Create Groups
 dn: cn=data,ou=groups,dc=lafeuille,dc=org

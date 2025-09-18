@@ -116,8 +116,6 @@ class PeopleControllerTest(
                 assertThat(it).isEqualTo(johnSmith.givenName)
             }.hasPathSatisfying("$.birthDate") {
                 assertThat(it).isEqualTo(johnSmith.birthDate.toString())
-            }.hasPathSatisfying("$.deathDate") {
-                assertThat(it).isEqualTo(johnSmith.deathDate.toString())
             }
     }
 

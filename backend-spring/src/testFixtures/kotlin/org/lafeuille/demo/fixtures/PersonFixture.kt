@@ -21,7 +21,6 @@ data class PersonFixture(
             givenName = givenName,
             familyName = familyName,
             birthDate = birthDate,
-            deathDate = deathDate,
         )
 }
 

@@ -7,6 +7,8 @@ import org.junit.jupiter.api.Order
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestMethodOrder
 import org.lafeuille.demo.fixtures.CommonSurnames
+import org.lafeuille.demo.fixtures.PersonFixtures.charlesBrown
+import org.lafeuille.demo.fixtures.PersonFixtures.jamesBrown
 import org.lafeuille.demo.fixtures.PersonFixtures.johnSmith
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.data.ldap.DataLdapTest
@@ -24,7 +26,7 @@ class PersonRepositoryTest(
     fun find_all() {
         val people = repository.findAll()
         assertThat(people)
-            .hasSize(2)
+            .hasSize(3)
             .allSatisfy(
                 Consumer {
                     assertThat(it.dn?.get(0)).isEqualTo("dc=org")
@@ -33,13 +35,22 @@ class PersonRepositoryTest(
                 },
             ).satisfies(
                 {
-                    assertThat(it.dn?.get(3)).isEqualTo("uid=jane.smith")
-                    assertThat(it.uid).isEqualTo("jane.smith")
-                    assertThat(it.commonName).isEqualTo("Jane Smith")
-                    assertThat(it.surname).isEqualTo("Smith")
-                    assertThat(it.givenName).isEqualTo("Jane")
+                    assertThat(it.dn?.get(3)).isEqualTo("uid=${charlesBrown.uid}")
+                    assertThat(it.uid).isEqualTo(charlesBrown.uid)
+                    assertThat(it.commonName).isEqualTo(charlesBrown.fullName)
+                    assertThat(it.surname).isEqualTo(charlesBrown.familyName)
+                    assertThat(it.givenName).isEqualTo(charlesBrown.givenName)
                 },
                 Index.atIndex(0),
+            ).satisfies(
+                {
+                    assertThat(it.dn?.get(3)).isEqualTo("uid=${jamesBrown.uid}")
+                    assertThat(it.uid).isEqualTo(jamesBrown.uid)
+                    assertThat(it.commonName).isEqualTo(jamesBrown.fullName)
+                    assertThat(it.surname).isEqualTo(jamesBrown.familyName)
+                    assertThat(it.givenName).isEqualTo(jamesBrown.givenName)
+                },
+                Index.atIndex(1),
             ).satisfies(
                 {
                     assertThat(it.dn?.get(3)).isEqualTo("uid=${johnSmith.uid}")
@@ -48,7 +59,7 @@ class PersonRepositoryTest(
                     assertThat(it.surname).isEqualTo(johnSmith.familyName)
                     assertThat(it.givenName).isEqualTo(johnSmith.givenName)
                 },
-                Index.atIndex(1),
+                Index.atIndex(2),
             )
     }
 
@@ -129,7 +140,7 @@ class PersonRepositoryTest(
 
                 assertThat(it.uid).isEqualTo(johnSmith.uid)
                 assertThat(it.commonName).isEqualTo("${johnSmith.givenName} ${CommonSurnames.JONES}")
-                assertThat(it.dateOfBirth).isEqualTo("2001010100Z")
+                assertThat(it.dateOfBirth).isEqualTo("1580010600Z")
                 assertThat(it.surname).isEqualTo(CommonSurnames.JONES)
                 assertThat(it.givenName).isEqualTo(johnSmith.givenName)
             },
