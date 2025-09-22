@@ -1,7 +1,6 @@
 package org.lafeuille.demo.domain
 
 import org.assertj.core.api.Assertions.assertThat
-import org.junit.jupiter.api.Test
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.Arguments
 import org.junit.jupiter.params.provider.MethodSource
@@ -22,7 +21,10 @@ class PersonResponseJsonTest(
     @ParameterizedTest
     @MethodSource("provideFixturesAndFiles")
     @Throws(IOException::class)
-    fun serialize(personFixture: PersonFixture, jsonFileName: String) {
+    fun serialize(
+        personFixture: PersonFixture,
+        jsonFileName: String,
+    ) {
         val jsonContent = jacksonTester.write(personFixture.toResponse())
         assertThat(jsonContent).isEqualToJson(jsonFileName)
     }
@@ -30,17 +32,21 @@ class PersonResponseJsonTest(
     @ParameterizedTest
     @MethodSource("provideFixturesAndFiles")
     @Throws(IOException::class)
-    fun deserialize(personFixture: PersonFixture, jsonFileName: String) {
+    fun deserialize(
+        personFixture: PersonFixture,
+        jsonFileName: String,
+    ) {
         val personResponse = jacksonTester.readObject(jsonFileName)
         assertThat(personResponse).isEqualTo(personFixture.toResponse())
     }
 
     companion object {
         @JvmStatic
-        fun provideFixturesAndFiles(): Stream<Arguments> = Stream.of(
-            Arguments.of(charlesBrown, "PersonResponse.CharlesBrown.json"),
-            Arguments.of(jamesBrown, "PersonResponse.JamesBrown.json"),
-            Arguments.of(johnSmith, "PersonResponse.JohnSmith.json"),
-        )
+        fun provideFixturesAndFiles(): Stream<Arguments> =
+            Stream.of(
+                Arguments.of(charlesBrown, "PersonResponse.CharlesBrown.json"),
+                Arguments.of(jamesBrown, "PersonResponse.JamesBrown.json"),
+                Arguments.of(johnSmith, "PersonResponse.JohnSmith.json"),
+            )
     }
 }
