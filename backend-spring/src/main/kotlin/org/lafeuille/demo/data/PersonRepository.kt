@@ -1,7 +1,7 @@
 package org.lafeuille.demo.data
 
 import org.springframework.data.ldap.repository.LdapRepository
-import org.springframework.data.rest.core.annotation.RestResource
+import org.springframework.data.rest.core.annotation.RepositoryRestResource
 
-@RestResource(exported = false)
+@RepositoryRestResource(exported = false)
 interface PersonRepository : LdapRepository<PersonEntry>
