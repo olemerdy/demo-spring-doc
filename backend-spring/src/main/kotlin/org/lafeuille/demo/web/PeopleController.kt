@@ -30,11 +30,7 @@ class PeopleController(
     @GetMapping("{uid}")
     fun readPerson(
         @PathVariable uid: String,
-    ): ResponseEntity<PersonResponse> =
-        service
-            .getPerson(uid)
-            .map { ResponseEntity.ok(it) }
-            .orElseGet { ResponseEntity.notFound().build() }
+    ): ResponseEntity<PersonResponse> = ResponseEntity.of(service.getPerson(uid))
 
     @DeleteMapping("{uid}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
