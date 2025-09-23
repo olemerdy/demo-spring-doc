@@ -18,23 +18,20 @@ ou: people
 # Create People
 dn: uid=charles.brown,ou=people,dc=lafeuille,dc=org
 objectClass: top
-objectClass: person
 objectClass: inetOrgPerson
 objectClass: naturalPerson
-objectClass: organizationalPerson
 uid: charles.brown
 cn: Charles Brown
 sn: Brown
 givenName: Charles
 dateOfBirth: 1950103000Z
 countryOfCitizenship: US
+title: Lovable loser
 
 dn: uid=james.brown,ou=people,dc=lafeuille,dc=org
 objectClass: top
-objectClass: person
 objectClass: inetOrgPerson
 objectClass: naturalPerson
-objectClass: organizationalPerson
 uid: james.brown
 cn: James Brown
 sn: Brown
@@ -44,10 +41,8 @@ countryOfCitizenship: US
 
 dn: uid=john.smith,ou=people,dc=lafeuille,dc=org
 objectClass: top
-objectClass: person
 objectClass: inetOrgPerson
 objectClass: naturalPerson
-objectClass: organizationalPerson
 uid: john.smith
 cn: John Smith
 sn: Smith
@@ -57,10 +52,8 @@ countryOfCitizenship: GB
 
 dn: uid=john.williams,ou=people,dc=lafeuille,dc=org
 objectClass: top
-objectClass: person
 objectClass: inetOrgPerson
 objectClass: naturalPerson
-objectClass: organizationalPerson
 uid: john.williams
 cn: John Williams
 sn: Williams
@@ -70,10 +63,8 @@ countryOfCitizenship: US
 
 dn: uid=joseph.garcia,ou=people,dc=lafeuille,dc=org
 objectClass: top
-objectClass: person
 objectClass: inetOrgPerson
 objectClass: naturalPerson
-objectClass: organizationalPerson
 uid: joseph.garcia
 cn: Joseph Garcia
 sn: Garcia
@@ -83,10 +74,8 @@ countryOfCitizenship: FR
 
 dn: uid=michael.rodriguez,ou=people,dc=lafeuille,dc=org
 objectClass: top
-objectClass: person
 objectClass: inetOrgPerson
 objectClass: naturalPerson
-objectClass: organizationalPerson
 uid: michael.rodriguez
 cn: Michael Rodriguez
 sn: Rodriguez
@@ -96,10 +85,8 @@ countryOfCitizenship: US
 
 dn: uid=robert.miller,ou=people,dc=lafeuille,dc=org
 objectClass: top
-objectClass: person
 objectClass: inetOrgPerson
 objectClass: naturalPerson
-objectClass: organizationalPerson
 uid: robert.miller
 cn: Robert Miller
 sn: Miller
@@ -109,10 +96,8 @@ countryOfCitizenship: NZ
 
 dn: uid=thomas.johnson,ou=people,dc=lafeuille,dc=org
 objectClass: top
-objectClass: person
 objectClass: inetOrgPerson
 objectClass: naturalPerson
-objectClass: organizationalPerson
 uid: thomas.johnson
 cn: Thomas Johnson
 sn: Johnson

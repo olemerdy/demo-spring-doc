@@ -9,7 +9,7 @@ import javax.naming.Name
 import javax.naming.ldap.LdapName
 
 @Entry(
-    objectClasses = ["inetOrgPerson", "naturalPerson", "organizationalPerson", "person", "top"],
+    objectClasses = ["inetOrgPerson", "naturalPerson", "top"],
     base = PersonEntry.DN_BASE,
 )
 class PersonEntry(
@@ -25,8 +25,17 @@ class PersonEntry(
     var surname: String?,
     var givenName: String?,
     var countryOfCitizenship: String?,
+    var title: String? = null,
+    @Attribute(name = "l")
+    var localityName: String? = null,
+    @Attribute(name = "street")
+    var streetAddress: String? = null,
+    var postOfficeBox: String? = null,
+    var postalCode: String? = null,
+    @Attribute(name = "st")
+    var stateOrProvinceName: String? = null,
 ) : Persistable<Name> {
-    constructor() : this(null, null, null, null, null, null, null)
+    constructor() : this(null, null, null, null, null, null, null, null, null)
 
     override fun getId(): Name? = dn
 
