@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Order
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestMethodOrder
 import org.lafeuille.demo.fixtures.CommonSurnames
+import org.lafeuille.demo.fixtures.PersonFixtures.UnknownGuy
 import org.lafeuille.demo.fixtures.PersonFixtures.charlesBrown
 import org.lafeuille.demo.fixtures.PersonFixtures.jamesBrown
 import org.lafeuille.demo.fixtures.PersonFixtures.johnSmith
@@ -23,7 +24,7 @@ class PersonRepositoryTest(
 ) {
     @Test
     @Order(1)
-    fun find_all() {
+    fun `find all is OK`() {
         val people = repository.findAll()
         assertThat(people)
             .hasSize(3)
@@ -65,7 +66,7 @@ class PersonRepositoryTest(
 
     @Test
     @Order(2)
-    fun find_by_id() {
+    fun `find by id is OK`() {
         val name = PersonEntry.uidToName(johnSmith.uid)
         val personOpt = repository.findById(name)
 
@@ -84,7 +85,15 @@ class PersonRepositoryTest(
 
     @Test
     @Order(3)
-    fun save_and_check_id() {
+    fun `find by unknow id is OK`() {
+        val name = PersonEntry.uidToName(UnknownGuy.UID)
+        val personOpt = repository.findById(name)
+        assertThat(personOpt).isEmpty
+    }
+
+    @Test
+    @Order(4)
+    fun `save and check id`() {
         val person =
             PersonEntry(
                 dn = null,
@@ -117,8 +126,8 @@ class PersonRepositoryTest(
     }
 
     @Test
-    @Order(4) // Ordering because we modify an entry that is checked by another test. Change for distinct dataset
-    fun update() {
+    @Order(5) // Ordering because we modify an entry that is checked by another test. Change for distinct dataset
+    fun `update is OK`() {
         val name = PersonEntry.uidToName(johnSmith.uid)
         val personOpt = repository.findById(name)
 
