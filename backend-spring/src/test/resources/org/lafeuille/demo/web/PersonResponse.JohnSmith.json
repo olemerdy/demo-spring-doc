@@ -1,0 +1,11 @@
+{
+  "identifier": "john.smith",
+  "name": "John Smith",
+  "givenName": "John",
+  "familyName": "Smith",
+  "birthDate": "1580-01-06",
+  "nationality": {
+    "identifier": "GB",
+    "name": "United Kingdom"
+  }
+}

@@ -113,17 +113,7 @@ class PeopleControllerTest(
                 ),
             ).hasStatusOk()
             .bodyJson()
-            .hasPathSatisfying("$.identifier") {
-                assertThat(it).isEqualTo(johnSmith.uid)
-            }.hasPathSatisfying("$.name") {
-                assertThat(it).isEqualTo(johnSmith.fullName)
-            }.hasPathSatisfying("$.familyName") {
-                assertThat(it).isEqualTo(johnSmith.familyName)
-            }.hasPathSatisfying("$.givenName") {
-                assertThat(it).isEqualTo(johnSmith.givenName)
-            }.hasPathSatisfying("$.birthDate") {
-                assertThat(it).isEqualTo(johnSmith.birthDate.toString())
-            }
+            .isEqualTo("org/lafeuille/demo/web/PersonResponse.JohnSmith.json")
     }
 
     @Test
