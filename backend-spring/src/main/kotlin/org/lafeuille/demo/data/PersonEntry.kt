@@ -35,7 +35,7 @@ class PersonEntry(
     @Attribute(name = "st")
     var stateOrProvinceName: String? = null,
 ) : Persistable<Name> {
-    constructor() : this(null, null, null, null, null, null, null, null, null)
+    constructor() : this(null, null, null, null, null, null, null)
 
     override fun getId(): Name? = dn
 
