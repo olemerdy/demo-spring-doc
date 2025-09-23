@@ -2,10 +2,12 @@ package org.lafeuille.demo.fixtures
 
 import org.lafeuille.demo.domain.PersonResponse
 import java.time.LocalDate
+import java.util.Locale
 
 data class PersonFixture(
     val givenName: String,
     val familyName: String,
+    val nationality: Locale,
     val birthDate: LocalDate,
     val deathDate: LocalDate? = null,
 ) {

@@ -27,6 +27,7 @@ cn: Charles Brown
 sn: Brown
 givenName: Charles
 dateOfBirth: 1950103000Z
+countryOfCitizenship: US
 
 dn: uid=james.brown,ou=people,dc=lafeuille,dc=org
 objectClass: top
@@ -39,6 +40,7 @@ cn: James Brown
 sn: Brown
 givenName: James
 dateOfBirth: 1933050300Z
+countryOfCitizenship: US
 
 dn: uid=john.smith,ou=people,dc=lafeuille,dc=org
 objectClass: top
@@ -51,6 +53,72 @@ cn: John Smith
 sn: Smith
 givenName: John
 dateOfBirth: 1580010600Z
+countryOfCitizenship: GB
+
+dn: uid=john.williams,ou=people,dc=lafeuille,dc=org
+objectClass: top
+objectClass: person
+objectClass: inetOrgPerson
+objectClass: naturalPerson
+objectClass: organizationalPerson
+uid: john.williams
+cn: John Williams
+sn: Williams
+givenName: John
+dateOfBirth: 1932020800Z
+countryOfCitizenship: US
+
+dn: uid=joseph.garcia,ou=people,dc=lafeuille,dc=org
+objectClass: top
+objectClass: person
+objectClass: inetOrgPerson
+objectClass: naturalPerson
+objectClass: organizationalPerson
+uid: joseph.garcia
+cn: Joseph Garcia
+sn: Garcia
+givenName: Joseph
+dateOfBirth: 1966031700Z
+countryOfCitizenship: FR
+
+dn: uid=michael.rodriguez,ou=people,dc=lafeuille,dc=org
+objectClass: top
+objectClass: person
+objectClass: inetOrgPerson
+objectClass: naturalPerson
+objectClass: organizationalPerson
+uid: michael.rodriguez
+cn: Michael Rodriguez
+sn: Rodriguez
+givenName: Michael
+dateOfBirth: 1978071200Z
+countryOfCitizenship: US
+
+dn: uid=robert.miller,ou=people,dc=lafeuille,dc=org
+objectClass: top
+objectClass: person
+objectClass: inetOrgPerson
+objectClass: naturalPerson
+objectClass: organizationalPerson
+uid: robert.miller
+cn: Robert Miller
+sn: Miller
+givenName: Robert
+dateOfBirth: 1944102100Z
+countryOfCitizenship: NZ
+
+dn: uid=thomas.johnson,ou=people,dc=lafeuille,dc=org
+objectClass: top
+objectClass: person
+objectClass: inetOrgPerson
+objectClass: naturalPerson
+objectClass: organizationalPerson
+uid: thomas.johnson
+cn: Thomas Johnson
+sn: Johnson
+givenName: Thomas
+dateOfBirth: 1955022800Z
+countryOfCitizenship: FR
 
 # Create Groups
 dn: cn=data,ou=groups,dc=lafeuille,dc=org

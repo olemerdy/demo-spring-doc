@@ -27,7 +27,7 @@ class PersonRepositoryTest(
     fun `find all is OK`() {
         val people = repository.findAll()
         assertThat(people)
-            .hasSize(3)
+            .hasSize(8)
             .allSatisfy(
                 Consumer {
                     assertThat(it.dn?.get(0)).isEqualTo("dc=org")
