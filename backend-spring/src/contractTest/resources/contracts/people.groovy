@@ -19,7 +19,7 @@ import static org.lafeuille.demo.fixtures.PersonFixtures.INSTANCE as People
             }
             response {
                 status OK()
-                body file('response.json')
+                body file('PersonResponse.JohnSmith.json')
                 headers {
                     contentType(MediaTypes.APPLICATION_JSON)
                 }

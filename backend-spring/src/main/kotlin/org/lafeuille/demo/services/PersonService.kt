@@ -8,21 +8,28 @@ import org.springframework.data.domain.PageImpl
 import org.springframework.data.domain.Pageable
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
+import java.util.Locale
 import java.util.Optional
 
 @Service
 class PersonService(
     private val repository: PersonRepository,
 ) {
-    fun getPeople(pageable: Pageable): Page<PersonResponse> =
+    fun getPeople(
+        pageable: Pageable,
+        locale: Locale,
+    ): Page<PersonResponse> =
         // Spring Data LDAP does not handle pagination
         PageImpl(repository.findAll(), pageable, repository.count())
-            .map { it.toResponse() }
+            .map { it.toResponse(locale) }
 
-    fun getPerson(uid: String): Optional<PersonResponse> =
+    fun getPerson(
+        uid: String,
+        locale: Locale,
+    ): Optional<PersonResponse> =
         repository
             .findById(PersonEntry.uidToName(uid))
-            .map { it.toResponse() }
+            .map { it.toResponse(locale) }
 
     @Transactional
     fun deletePerson(uid: String) {

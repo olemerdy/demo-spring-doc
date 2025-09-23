@@ -6,6 +6,8 @@ import org.lafeuille.demo.fixtures.PersonFixtures
 import org.lafeuille.demo.fixtures.PersonFixtures.charlesBrown
 import org.lafeuille.demo.fixtures.PersonFixtures.johnSmith
 import org.lafeuille.demo.services.PersonService
+import org.mockito.kotlin.any
+import org.mockito.kotlin.eq
 import org.mockito.kotlin.whenever
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.restdocs.AutoConfigureRestDocs
@@ -23,6 +25,7 @@ import org.springframework.restdocs.request.RequestDocumentation.pathParameters
 import org.springframework.restdocs.request.RequestDocumentation.queryParameters
 import org.springframework.test.context.bean.override.mockito.MockitoBean
 import org.springframework.test.web.servlet.assertj.MockMvcTester
+import java.util.Locale
 import java.util.Optional
 
 @WebMvcTest(controllers = [PeopleController::class])
@@ -37,7 +40,7 @@ class PeopleControllerTest(
     fun test_GET_people_empty_OK() {
         val pageable = Pageable.ofSize(20)
 
-        whenever(service.getPeople(pageable))
+        whenever(service.getPeople(eq(pageable), any()))
             .thenReturn(
                 Page.empty(pageable),
             )
@@ -61,12 +64,12 @@ class PeopleControllerTest(
                 ),
             )
 
-        whenever(service.getPeople(pageable))
+        whenever(service.getPeople(eq(pageable), any()))
             .thenReturn(
                 PageImpl(
                     listOf(
-                        johnSmith.toResponse(),
-                        charlesBrown.toResponse(),
+                        johnSmith.toResponse(Locale.ENGLISH),
+                        charlesBrown.toResponse(Locale.ENGLISH),
                     ),
                     pageable,
                     2,
@@ -92,9 +95,9 @@ class PeopleControllerTest(
 
     @Test
     fun test_GET_people_uid_OK() {
-        whenever(service.getPerson(johnSmith.uid))
+        whenever(service.getPerson(eq(johnSmith.uid), any()))
             .thenReturn(
-                Optional.of(johnSmith.toResponse()),
+                Optional.of(johnSmith.toResponse(Locale.ENGLISH)),
             )
 
         assertThat(mockMvc.get().uri("/api/v1/people/{uid}", johnSmith.uid))
@@ -103,25 +106,19 @@ class PeopleControllerTest(
                     "GET_people_uid_OK",
                     pathParameters(PersonDescriptors.Parameter.UID),
                     responseFields(PersonDescriptors.Fields.ALL),
+                    responseFields(
+                        PersonDescriptors.SubSection.NATIONALITY,
+                        CountryDescriptors.Fields.ALL,
+                    ),
                 ),
             ).hasStatusOk()
             .bodyJson()
-            .hasPathSatisfying("$.identifier") {
-                assertThat(it).isEqualTo(johnSmith.uid)
-            }.hasPathSatisfying("$.name") {
-                assertThat(it).isEqualTo(johnSmith.fullName)
-            }.hasPathSatisfying("$.familyName") {
-                assertThat(it).isEqualTo(johnSmith.familyName)
-            }.hasPathSatisfying("$.givenName") {
-                assertThat(it).isEqualTo(johnSmith.givenName)
-            }.hasPathSatisfying("$.birthDate") {
-                assertThat(it).isEqualTo(johnSmith.birthDate.toString())
-            }
+            .isEqualTo("org/lafeuille/demo/web/PersonResponse.JohnSmith.json")
     }
 
     @Test
     fun test_GET_people_uid_NOT_FOUND() {
-        whenever(service.getPerson(PersonFixtures.UnknownGuy.UID))
+        whenever(service.getPerson(eq(PersonFixtures.UnknownGuy.UID), any()))
             .thenReturn(
                 Optional.empty(),
             )

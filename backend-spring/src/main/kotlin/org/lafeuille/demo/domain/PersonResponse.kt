@@ -11,4 +11,5 @@ data class PersonResponse(
     val givenName: String,
     val familyName: String,
     val birthDate: LocalDate,
+    val nationality: CountryResponse,
 )

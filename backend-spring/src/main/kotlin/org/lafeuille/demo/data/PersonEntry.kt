@@ -24,8 +24,9 @@ class PersonEntry(
     @Attribute(name = "sn")
     var surname: String?,
     var givenName: String?,
+    var countryOfCitizenship: String?,
 ) : Persistable<Name> {
-    constructor() : this(null, null, null, null, null, null)
+    constructor() : this(null, null, null, null, null, null, null)
 
     override fun getId(): Name? = dn
 

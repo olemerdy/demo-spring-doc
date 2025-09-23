@@ -102,6 +102,7 @@ class PersonRepositoryTest(
                 dateOfBirth = "2003030300Z",
                 givenName = "John",
                 surname = "Doe",
+                countryOfCitizenship = "BE",
             )
         assertThat(person.dn).isNull()
         assertThat(person.isNew).isTrue()

@@ -1,5 +1,6 @@
 package org.lafeuille.demo.fixtures
 
+import org.lafeuille.demo.domain.CountryResponse
 import org.lafeuille.demo.domain.PersonResponse
 import java.time.LocalDate
 import java.util.Locale
@@ -16,13 +17,18 @@ data class PersonFixture(
     val fullName: String
         get() = "$givenName $familyName"
 
-    fun toResponse() =
+    fun toResponse(locale: Locale) =
         PersonResponse(
             identifier = uid,
             name = fullName,
             givenName = givenName,
             familyName = familyName,
             birthDate = birthDate,
+            nationality =
+                CountryResponse(
+                    identifier = nationality.country,
+                    name = nationality.getDisplayCountry(locale),
+                ),
         )
 }
 

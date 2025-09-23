@@ -12,6 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.json.JsonTest
 import org.springframework.boot.test.json.JacksonTester
 import java.io.IOException
+import java.util.Locale
+import java.util.Locale.ENGLISH
 import java.util.stream.Stream
 
 @JsonTest
@@ -24,8 +26,9 @@ class PersonResponseJsonTest(
     fun serialize(
         personFixture: PersonFixture,
         jsonFileName: String,
+        locale: Locale,
     ) {
-        val jsonContent = jacksonTester.write(personFixture.toResponse())
+        val jsonContent = jacksonTester.write(personFixture.toResponse(locale))
         assertThat(jsonContent).isEqualToJson(jsonFileName)
     }
 
@@ -35,18 +38,19 @@ class PersonResponseJsonTest(
     fun deserialize(
         personFixture: PersonFixture,
         jsonFileName: String,
+        locale: Locale,
     ) {
         val personResponse = jacksonTester.readObject(jsonFileName)
-        assertThat(personResponse).isEqualTo(personFixture.toResponse())
+        assertThat(personResponse).isEqualTo(personFixture.toResponse(locale))
     }
 
     companion object {
         @JvmStatic
         fun provideFixturesAndFiles(): Stream<Arguments> =
             Stream.of(
-                Arguments.of(charlesBrown, "PersonResponse.CharlesBrown.json"),
-                Arguments.of(jamesBrown, "PersonResponse.JamesBrown.json"),
-                Arguments.of(johnSmith, "PersonResponse.JohnSmith.json"),
+                Arguments.of(charlesBrown, "PersonResponse.CharlesBrown.json", ENGLISH),
+                Arguments.of(jamesBrown, "PersonResponse.JamesBrown.json", ENGLISH),
+                Arguments.of(johnSmith, "PersonResponse.JohnSmith.json", ENGLISH),
             )
     }
 }
