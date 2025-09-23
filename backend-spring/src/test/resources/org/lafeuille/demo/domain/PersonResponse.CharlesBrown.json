@@ -3,5 +3,9 @@
   "name": "Charles Brown",
   "givenName": "Charles",
   "familyName": "Brown",
-  "birthDate": "1950-10-30"
+  "birthDate": "1950-10-30",
+  "nationality": {
+    "identifier": "US",
+    "name": "United States"
+  }
 }
