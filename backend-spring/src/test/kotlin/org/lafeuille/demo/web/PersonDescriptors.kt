@@ -37,9 +37,15 @@ object PersonDescriptors {
             fieldWithPath("birthDate")
                 .description("Birth date, in ISO-8601 format")
         }
+        val JOB_TITLE: FieldDescriptor by lazy {
+            fieldWithPath("jobTitle")
+                .description("Job title")
+                .optional()
+        }
         val NATIONALITY: FieldDescriptor by lazy {
             subsectionWithPath("nationality")
                 .description("Country of citizenship")
+                .optional()
         }
     }
 
@@ -57,6 +63,7 @@ object PersonDescriptors {
                 Field.GIVEN_NAME,
                 Field.FAMILY_NAME,
                 Field.BIRTHDATE,
+                Field.JOB_TITLE,
                 Field.NATIONALITY,
             )
         }

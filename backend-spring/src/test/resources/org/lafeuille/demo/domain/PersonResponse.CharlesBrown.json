@@ -4,6 +4,7 @@
   "givenName": "Charles",
   "familyName": "Brown",
   "birthDate": "1950-10-30",
+  "jobTitle": "Lovable loser",
   "nationality": {
     "identifier": "US",
     "name": "United States"
