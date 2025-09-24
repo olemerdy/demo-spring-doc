@@ -13,7 +13,9 @@ data class PersonResponse(
     val givenName: String,
     val familyName: String,
     val birthDate: LocalDate,
-    val nationality: CountryResponse,
+    @field:JsonInclude(JsonInclude.Include.NON_EMPTY)
+    val nationality: CountryResponse? = null,
     val jobTitle: String? = null,
+    @field:JsonInclude(JsonInclude.Include.NON_EMPTY)
     val address: PostalAddressResponse? = null,
 )

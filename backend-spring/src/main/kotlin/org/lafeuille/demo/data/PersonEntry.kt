@@ -1,5 +1,6 @@
 package org.lafeuille.demo.data
 
+import jakarta.validation.constraints.NotNull
 import org.springframework.data.domain.Persistable
 import org.springframework.ldap.odm.annotations.Attribute
 import org.springframework.ldap.odm.annotations.DnAttribute
@@ -27,6 +28,7 @@ class PersonEntry(
     var countryOfCitizenship: String?,
     var title: String? = null,
     @Attribute(name = "l")
+    @field:NotNull
     var localityName: String? = null,
     @Attribute(name = "street")
     var streetAddress: String? = null,

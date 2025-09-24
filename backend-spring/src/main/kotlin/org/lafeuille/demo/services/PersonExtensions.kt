@@ -3,6 +3,7 @@ package org.lafeuille.demo.services
 import org.lafeuille.demo.data.PersonEntry
 import org.lafeuille.demo.domain.CountryResponse
 import org.lafeuille.demo.domain.PersonResponse
+import org.lafeuille.demo.domain.PostalAddressResponse
 import java.time.LocalDate
 import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
@@ -20,16 +21,37 @@ object PersonExtensions {
     ): String = Locale.of("", countryCode).getDisplayCountry(locale)
 }
 
-internal fun PersonEntry.toResponse(locale: Locale) =
+internal fun PersonEntry.toPersonResponse(locale: Locale) =
     PersonResponse(
-        identifier = this.uid!!,
-        name = this.commonName!!,
-        familyName = this.surname!!,
-        givenName = this.givenName!!,
-        birthDate = PersonExtensions.generalizedTimeToLocalDate(this.dateOfBirth!!),
-        nationality =
-            CountryResponse(
-                identifier = this.countryOfCitizenship!!,
-                name = PersonExtensions.countryCodeToDisplayCountry(this.countryOfCitizenship!!, locale),
-            ),
+        identifier = uid!!,
+        name = commonName!!,
+        familyName = surname!!,
+        givenName = givenName!!,
+        birthDate = PersonExtensions.generalizedTimeToLocalDate(dateOfBirth!!),
+        nationality = toCountryResponse(locale),
+        jobTitle = title,
+        address = toPostalAddressResponse(),
     )
+
+internal fun PersonEntry.toCountryResponse(locale: Locale) =
+    if (countryOfCitizenship == null) {
+        null
+    } else {
+        CountryResponse(
+            identifier = countryOfCitizenship!!,
+            name = PersonExtensions.countryCodeToDisplayCountry(countryOfCitizenship!!, locale),
+        )
+    }
+
+internal fun PersonEntry.toPostalAddressResponse(): PostalAddressResponse? =
+    if (localityName == null && stateOrProvinceName == null && postOfficeBox == null && postalCode == null && streetAddress == null) {
+        null
+    } else {
+        PostalAddressResponse(
+            addressLocality = localityName,
+            addressRegion = stateOrProvinceName,
+            postOfficeBoxNumber = postOfficeBox,
+            postalCode = postalCode,
+            streetAddress = streetAddress,
+        )
+    }
