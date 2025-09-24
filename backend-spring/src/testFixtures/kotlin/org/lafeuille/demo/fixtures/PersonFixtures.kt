@@ -11,6 +11,7 @@ object PersonFixtures {
             familyName = CommonSurnames.BROWN,
             nationality = Locale.US,
             birthDate = LocalDate.of(1950, Month.OCTOBER, 30),
+            title = "Lovable loser",
         )
     }
 
@@ -21,6 +22,7 @@ object PersonFixtures {
             birthDate = LocalDate.of(1933, Month.MAY, 3),
             nationality = Locale.US,
             deathDate = LocalDate.of(2006, Month.DECEMBER, 25),
+            title = "Singer, songwriter, dancer, musician, record producer, bandleader",
         )
     }
 
@@ -31,6 +33,7 @@ object PersonFixtures {
             birthDate = LocalDate.of(1580, Month.JANUARY, 6),
             nationality = Locale.UK,
             deathDate = LocalDate.of(1631, Month.JUNE, 21),
+            title = "Soldier, explorer, colonial governor, admiral of New England, and author",
         )
     }
 
@@ -40,6 +43,7 @@ object PersonFixtures {
             familyName = CommonSurnames.WILLIAMS,
             nationality = Locale.US,
             birthDate = LocalDate.of(1932, Month.FEBRUARY, 8),
+            title = "Composer, conductor, orchestrator, arranger",
         )
     }
 
@@ -49,6 +53,7 @@ object PersonFixtures {
             familyName = CommonSurnames.GARCIA,
             nationality = Locale.FRANCE,
             birthDate = LocalDate.of(1966, Month.MARCH, 17),
+            title = "Actor",
         )
     }
 
@@ -58,6 +63,7 @@ object PersonFixtures {
             familyName = CommonSurnames.RODRIGUEZ,
             nationality = Locale.US,
             birthDate = LocalDate.of(1978, Month.JULY, 12),
+            title = "Actor",
         )
     }
 
@@ -67,6 +73,7 @@ object PersonFixtures {
             familyName = CommonSurnames.MILLER,
             nationality = Locale.of(null, "NZ"),
             birthDate = LocalDate.of(1944, Month.OCTOBER, 21),
+            title = "Professional wrestler",
         )
     }
 
@@ -76,6 +83,7 @@ object PersonFixtures {
             familyName = CommonSurnames.JOHNSON,
             nationality = Locale.FRANCE,
             birthDate = LocalDate.of(1955, Month.FEBRUARY, 28),
+            title = "Journalist, movie director",
         )
     }
 

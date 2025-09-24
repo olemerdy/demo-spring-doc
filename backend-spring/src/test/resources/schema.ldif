@@ -38,6 +38,7 @@ sn: Brown
 givenName: James
 dateOfBirth: 1933050300Z
 countryOfCitizenship: US
+title: Singer, songwriter, dancer, musician, record producer, bandleader
 
 dn: uid=john.smith,ou=people,dc=lafeuille,dc=org
 objectClass: top
@@ -49,6 +50,7 @@ sn: Smith
 givenName: John
 dateOfBirth: 1580010600Z
 countryOfCitizenship: GB
+title: Soldier, explorer, colonial governor, admiral of New England, author
 
 dn: uid=john.williams,ou=people,dc=lafeuille,dc=org
 objectClass: top
@@ -60,6 +62,7 @@ sn: Williams
 givenName: John
 dateOfBirth: 1932020800Z
 countryOfCitizenship: US
+title: Composer, conductor, orchestrator, arranger
 
 dn: uid=joseph.garcia,ou=people,dc=lafeuille,dc=org
 objectClass: top
