@@ -16,6 +16,18 @@ objectClass: organizationalUnit
 ou: people
 
 # Create People
+dn: uid=barbara.jones,ou=people,dc=lafeuille,dc=org
+objectClass: top
+objectClass: inetOrgPerson
+objectClass: naturalPerson
+uid: barbara.jones
+cn: Barbara Jones
+sn: Jones
+givenName: Barbara
+dateOfBirth: 1952070100Z
+countryOfCitizenship: JM
+title: Singer
+
 dn: uid=charles.brown,ou=people,dc=lafeuille,dc=org
 objectClass: top
 objectClass: inetOrgPerson
@@ -27,6 +39,21 @@ givenName: Charles
 dateOfBirth: 1950103000Z
 countryOfCitizenship: US
 title: Lovable loser
+
+dn: uid=elizabeth.garcia,ou=people,dc=lafeuille,dc=org
+objectClass: top
+objectClass: inetOrgPerson
+objectClass: naturalPerson
+uid: elizabeth.garcia
+cn: Elizabeth Garcia
+sn: Garcia
+givenName: Elizabeth
+dateOfBirth: 2001010100Z
+countryOfCitizenship: CZ
+l: Phoenix
+street: 123 Over the Rainbow Road
+postalCode: 85022
+st: Arizona
 
 dn: uid=james.brown,ou=people,dc=lafeuille,dc=org
 objectClass: top
@@ -75,6 +102,28 @@ givenName: Joseph
 dateOfBirth: 1966031700Z
 countryOfCitizenship: FR
 
+dn: uid=linda.martinez,ou=people,dc=lafeuille,dc=org
+objectClass: top
+objectClass: inetOrgPerson
+objectClass: naturalPerson
+uid: linda.martinez
+cn: Linda Martinez
+sn: Martinez
+givenName: Linda
+dateOfBirth: 1975120200Z
+countryOfCitizenship: US
+
+dn: uid=mary.davis,ou=people,dc=lafeuille,dc=org
+objectClass: top
+objectClass: inetOrgPerson
+objectClass: naturalPerson
+uid: mary.davis
+cn: Mary Davis
+sn: Davis
+givenName: Mary
+dateOfBirth: 1954080600Z
+countryOfCitizenship: IE
+
 dn: uid=michael.rodriguez,ou=people,dc=lafeuille,dc=org
 objectClass: top
 objectClass: inetOrgPerson
@@ -84,6 +133,17 @@ cn: Michael Rodriguez
 sn: Rodriguez
 givenName: Michael
 dateOfBirth: 1978071200Z
+countryOfCitizenship: US
+
+dn: uid=patricia.davis,ou=people,dc=lafeuille,dc=org
+objectClass: top
+objectClass: inetOrgPerson
+objectClass: naturalPerson
+uid: patricia.davis
+cn: Patricia Davis
+sn: Davis
+givenName: Patricia
+dateOfBirth: 1956030100Z
 countryOfCitizenship: US
 
 dn: uid=robert.miller,ou=people,dc=lafeuille,dc=org
