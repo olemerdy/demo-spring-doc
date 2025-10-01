@@ -31,7 +31,7 @@ dependencyManagement {
     }
 }
 
-extra["snippetsDir"] = layout.buildDirectory.file("generated-snippets")
+val snippetsDir by extra(layout.buildDirectory.file("generated-snippets").get())
 
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-actuator")
@@ -77,12 +77,23 @@ tasks.contractTest {
 }
 
 tasks.test {
-    outputs.dir(project.extra["snippetsDir"]!!)
+    outputs.dir(snippetsDir.asFile.path)
 }
 
 tasks.asciidoctor {
-    inputs.dir(project.extra["snippetsDir"]!!)
+    inputs.dir(snippetsDir.asFile.path)
     dependsOn(tasks.test)
+}
+
+tasks.bootJar {
+    dependsOn(tasks.asciidoctor)
+    from(
+        tasks.asciidoctor
+            .get()
+            .outputDir.path,
+    ) {
+        into("static/docs")
+    }
 }
 
 contracts {
