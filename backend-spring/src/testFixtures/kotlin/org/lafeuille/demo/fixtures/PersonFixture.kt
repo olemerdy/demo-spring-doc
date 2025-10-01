@@ -11,6 +11,8 @@ data class PersonFixture(
     val nationality: Locale,
     val birthDate: LocalDate,
     val deathDate: LocalDate? = null,
+    var title: String? = null,
+    var address: AddressFixture? = null,
 ) {
     val uid: String
         get() = "${givenName.lowercase()}.${familyName.lowercase()}"
@@ -29,6 +31,8 @@ data class PersonFixture(
                     identifier = nationality.country,
                     name = nationality.getDisplayCountry(locale),
                 ),
+            jobTitle = title,
+            address = address?.toResponse(),
         )
 }
 

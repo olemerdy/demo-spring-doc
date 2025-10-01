@@ -21,7 +21,7 @@ class PersonService(
     ): Page<PersonResponse> =
         // Spring Data LDAP does not handle pagination
         PageImpl(repository.findAll(), pageable, repository.count())
-            .map { it.toResponse(locale) }
+            .map { it.toPersonResponse(locale) }
 
     fun getPerson(
         uid: String,
@@ -29,7 +29,7 @@ class PersonService(
     ): Optional<PersonResponse> =
         repository
             .findById(PersonEntry.uidToName(uid))
-            .map { it.toResponse(locale) }
+            .map { it.toPersonResponse(locale) }
 
     @Transactional
     fun deletePerson(uid: String) {

@@ -16,64 +16,85 @@ objectClass: organizationalUnit
 ou: people
 
 # Create People
-dn: uid=charles.brown,ou=people,dc=lafeuille,dc=org
+dn: uid=barbara.jones,ou=people,dc=lafeuille,dc=org
 objectClass: top
-objectClass: person
 objectClass: inetOrgPerson
 objectClass: naturalPerson
-objectClass: organizationalPerson
+uid: barbara.jones
+cn: Barbara Jones
+sn: Jones
+givenName: Barbara
+dateOfBirth: 1952070100Z
+countryOfCitizenship: JM
+title: Singer
+
+dn: uid=charles.brown,ou=people,dc=lafeuille,dc=org
+objectClass: top
+objectClass: inetOrgPerson
+objectClass: naturalPerson
 uid: charles.brown
 cn: Charles Brown
 sn: Brown
 givenName: Charles
 dateOfBirth: 1950103000Z
 countryOfCitizenship: US
+title: Lovable loser
+
+dn: uid=elizabeth.garcia,ou=people,dc=lafeuille,dc=org
+objectClass: top
+objectClass: inetOrgPerson
+objectClass: naturalPerson
+uid: elizabeth.garcia
+cn: Elizabeth Garcia
+sn: Garcia
+givenName: Elizabeth
+dateOfBirth: 2001010100Z
+countryOfCitizenship: CZ
+l: Phoenix
+street: 123 Over the Rainbow Road
+postalCode: 85022
+st: Arizona
 
 dn: uid=james.brown,ou=people,dc=lafeuille,dc=org
 objectClass: top
-objectClass: person
 objectClass: inetOrgPerson
 objectClass: naturalPerson
-objectClass: organizationalPerson
 uid: james.brown
 cn: James Brown
 sn: Brown
 givenName: James
 dateOfBirth: 1933050300Z
 countryOfCitizenship: US
+title: Singer, songwriter, dancer, musician, record producer, bandleader
 
 dn: uid=john.smith,ou=people,dc=lafeuille,dc=org
 objectClass: top
-objectClass: person
 objectClass: inetOrgPerson
 objectClass: naturalPerson
-objectClass: organizationalPerson
 uid: john.smith
 cn: John Smith
 sn: Smith
 givenName: John
 dateOfBirth: 1580010600Z
 countryOfCitizenship: GB
+title: Soldier, explorer, colonial governor, admiral of New England, author
 
 dn: uid=john.williams,ou=people,dc=lafeuille,dc=org
 objectClass: top
-objectClass: person
 objectClass: inetOrgPerson
 objectClass: naturalPerson
-objectClass: organizationalPerson
 uid: john.williams
 cn: John Williams
 sn: Williams
 givenName: John
 dateOfBirth: 1932020800Z
 countryOfCitizenship: US
+title: Composer, conductor, orchestrator, arranger
 
 dn: uid=joseph.garcia,ou=people,dc=lafeuille,dc=org
 objectClass: top
-objectClass: person
 objectClass: inetOrgPerson
 objectClass: naturalPerson
-objectClass: organizationalPerson
 uid: joseph.garcia
 cn: Joseph Garcia
 sn: Garcia
@@ -81,12 +102,32 @@ givenName: Joseph
 dateOfBirth: 1966031700Z
 countryOfCitizenship: FR
 
-dn: uid=michael.rodriguez,ou=people,dc=lafeuille,dc=org
+dn: uid=linda.martinez,ou=people,dc=lafeuille,dc=org
 objectClass: top
-objectClass: person
 objectClass: inetOrgPerson
 objectClass: naturalPerson
-objectClass: organizationalPerson
+uid: linda.martinez
+cn: Linda Martinez
+sn: Martinez
+givenName: Linda
+dateOfBirth: 1975120200Z
+countryOfCitizenship: US
+
+dn: uid=mary.davis,ou=people,dc=lafeuille,dc=org
+objectClass: top
+objectClass: inetOrgPerson
+objectClass: naturalPerson
+uid: mary.davis
+cn: Mary Davis
+sn: Davis
+givenName: Mary
+dateOfBirth: 1954080600Z
+countryOfCitizenship: IE
+
+dn: uid=michael.rodriguez,ou=people,dc=lafeuille,dc=org
+objectClass: top
+objectClass: inetOrgPerson
+objectClass: naturalPerson
 uid: michael.rodriguez
 cn: Michael Rodriguez
 sn: Rodriguez
@@ -94,12 +135,21 @@ givenName: Michael
 dateOfBirth: 1978071200Z
 countryOfCitizenship: US
 
-dn: uid=robert.miller,ou=people,dc=lafeuille,dc=org
+dn: uid=patricia.davis,ou=people,dc=lafeuille,dc=org
 objectClass: top
-objectClass: person
 objectClass: inetOrgPerson
 objectClass: naturalPerson
-objectClass: organizationalPerson
+uid: patricia.davis
+cn: Patricia Davis
+sn: Davis
+givenName: Patricia
+dateOfBirth: 1956030100Z
+countryOfCitizenship: US
+
+dn: uid=robert.miller,ou=people,dc=lafeuille,dc=org
+objectClass: top
+objectClass: inetOrgPerson
+objectClass: naturalPerson
 uid: robert.miller
 cn: Robert Miller
 sn: Miller
@@ -109,10 +159,8 @@ countryOfCitizenship: NZ
 
 dn: uid=thomas.johnson,ou=people,dc=lafeuille,dc=org
 objectClass: top
-objectClass: person
 objectClass: inetOrgPerson
 objectClass: naturalPerson
-objectClass: organizationalPerson
 uid: thomas.johnson
 cn: Thomas Johnson
 sn: Johnson

@@ -27,7 +27,7 @@ class PersonRepositoryTest(
     fun `find all is OK`() {
         val people = repository.findAll()
         assertThat(people)
-            .hasSize(8)
+            .hasSize(13)
             .allSatisfy(
                 Consumer {
                     assertThat(it.dn?.get(0)).isEqualTo("dc=org")
@@ -42,7 +42,7 @@ class PersonRepositoryTest(
                     assertThat(it.surname).isEqualTo(charlesBrown.familyName)
                     assertThat(it.givenName).isEqualTo(charlesBrown.givenName)
                 },
-                Index.atIndex(0),
+                Index.atIndex(1),
             ).satisfies(
                 {
                     assertThat(it.dn?.get(3)).isEqualTo("uid=${jamesBrown.uid}")
@@ -51,7 +51,7 @@ class PersonRepositoryTest(
                     assertThat(it.surname).isEqualTo(jamesBrown.familyName)
                     assertThat(it.givenName).isEqualTo(jamesBrown.givenName)
                 },
-                Index.atIndex(1),
+                Index.atIndex(3),
             ).satisfies(
                 {
                     assertThat(it.dn?.get(3)).isEqualTo("uid=${johnSmith.uid}")
@@ -60,7 +60,7 @@ class PersonRepositoryTest(
                     assertThat(it.surname).isEqualTo(johnSmith.familyName)
                     assertThat(it.givenName).isEqualTo(johnSmith.givenName)
                 },
-                Index.atIndex(2),
+                Index.atIndex(4),
             )
     }
 
