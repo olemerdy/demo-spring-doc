@@ -54,11 +54,19 @@ dependencies {
 }
 
 spotless {
+    json {
+        target("src/**/*.json")
+        jackson()
+    }
     kotlin {
         ktlint()
     }
     kotlinGradle {
         ktlint()
+    }
+    yaml {
+        target("src/**/*.yml")
+        jackson()
     }
 }
 
