@@ -80,10 +80,6 @@ tasks.withType<Test> {
     useJUnitPlatform()
 }
 
-tasks.contractTest {
-    useJUnitPlatform()
-}
-
 tasks.test {
     outputs.dir(snippetsDir.asFile.path)
 }
