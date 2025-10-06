@@ -27,7 +27,7 @@ jobs:
           distribution: ${{ inputs.java-distribution }}
           java-version: ${{ inputs.java-version }}
           cache: 'gradle'
-      - uses: gradle/actions/setup-gradle@v4
+      - uses: gradle/actions/setup-gradle@v5
       - name: Publish to Github Packages
         run: ./gradlew -Pversion=${{ inputs.artifact-version }} publish
         working-directory: backend-spring
