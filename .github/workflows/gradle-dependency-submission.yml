@@ -21,7 +21,7 @@ jobs:
           distribution: 'temurin'
           java-version: '21'
           cache: 'gradle'
-      - uses: gradle/actions/dependency-submission@v4
+      - uses: gradle/actions/dependency-submission@v5
         with:
           build-root-directory: backend-spring
 
