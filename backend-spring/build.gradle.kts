@@ -42,6 +42,7 @@ dependencies {
     implementation("org.springframework.data:spring-data-rest-hal-explorer")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
+    implementation(libs.springdoc)
     testAndDevelopmentOnly("org.springframework.boot:spring-boot-devtools")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("com.unboundid:unboundid-ldapsdk")
