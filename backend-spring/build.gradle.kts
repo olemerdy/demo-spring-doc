@@ -27,6 +27,7 @@ repositories {
 dependencyManagement {
     imports {
         mavenBom("org.springframework.cloud:spring-cloud-dependencies:${libs.versions.spring.cloud.asProvider().get()}")
+        mavenBom("org.springdoc:springdoc-openapi-bom:${libs.versions.springdoc.get()}")
         mavenBom("io.cucumber:cucumber-bom:${libs.versions.cucumber.asProvider().get()}")
     }
 }
@@ -42,7 +43,7 @@ dependencies {
     implementation("org.springframework.data:spring-data-rest-hal-explorer")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
-    implementation(libs.springdoc)
+    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui")
     testAndDevelopmentOnly("org.springframework.boot:spring-boot-devtools")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("com.unboundid:unboundid-ldapsdk")
