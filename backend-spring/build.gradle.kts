@@ -20,10 +20,6 @@ java {
     }
 }
 
-repositories {
-    mavenCentral()
-}
-
 dependencyManagement {
     imports {
         mavenBom("org.springframework.cloud:spring-cloud-dependencies:${libs.versions.spring.cloud.asProvider().get()}")

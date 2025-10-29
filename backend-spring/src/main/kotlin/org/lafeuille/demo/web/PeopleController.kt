@@ -34,7 +34,7 @@ class PeopleController(
     fun readPerson(
         @PathVariable uid: String,
         locale: Locale,
-    ): ResponseEntity<PersonResponse> = ResponseEntity.of(service.getPerson(uid, locale))
+    ): ResponseEntity<EntityModel<PersonResponse>> = ResponseEntity.of(service.getPerson(uid, locale).map { EntityModel.of(it) })
 
     @DeleteMapping("{uid}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
