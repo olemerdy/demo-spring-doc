@@ -21,7 +21,7 @@ import static org.lafeuille.demo.fixtures.PersonFixtures.INSTANCE as People
                 status OK()
                 body file('PersonResponse.JohnSmith.json')
                 headers {
-                    contentType(MediaTypes.APPLICATION_JSON)
+                    contentType("application/hal+json")
                 }
             }
         },
