@@ -11,7 +11,7 @@ import static org.lafeuille.demo.fixtures.PersonFixtures.INSTANCE as People
             name 'GET people by UID found'
             request {
                 method GET()
-                urlPath("/api/v1/people/${People.johnSmith.uid}") {
+                urlPath("/api/people/${People.johnSmith.uid}") {
                 }
                 headers {
                     contentType(MediaTypes.APPLICATION_JSON)
@@ -30,7 +30,7 @@ import static org.lafeuille.demo.fixtures.PersonFixtures.INSTANCE as People
             name 'GET people by UID not found'
             request {
                 method GET()
-                urlPath("/api/v1/people/${PersonFixtures.UnknownGuy.UID}") {
+                urlPath("/api/people/${PersonFixtures.UnknownGuy.UID}") {
                 }
                 headers {
                     contentType(MediaTypes.APPLICATION_JSON)
@@ -45,7 +45,7 @@ import static org.lafeuille.demo.fixtures.PersonFixtures.INSTANCE as People
             name 'DELETE people by UID'
             request {
                 method DELETE()
-                urlPath("/api/v1/people/${People.johnSmith.uid}") {
+                urlPath("/api/people/${People.johnSmith.uid}") {
                 }
                 headers {
                     contentType(MediaTypes.APPLICATION_JSON)

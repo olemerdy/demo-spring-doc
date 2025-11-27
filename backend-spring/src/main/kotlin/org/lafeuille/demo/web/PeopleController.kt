@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController
 import java.util.Locale
 
 @RestController
-@RequestMapping("api/v1/people")
+@RequestMapping("api/people")
 class PeopleController(
     @param:Autowired val service: PersonService,
 ) {

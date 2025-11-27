@@ -43,6 +43,7 @@ dependencies {
     testImplementation("org.springframework.boot:spring-boot-starter-actuator-test")
     testImplementation("org.springframework.boot:spring-boot-starter-data-ldap-test")
     testImplementation("org.springframework.boot:spring-boot-starter-hateoas-test")
+    testImplementation("org.springframework.boot:spring-boot-starter-ldap")
     testImplementation("org.springframework.boot:spring-boot-starter-validation-test")
     testImplementation("org.springframework.boot:spring-boot-starter-webmvc-test")
     testImplementation("com.unboundid:unboundid-ldapsdk")
