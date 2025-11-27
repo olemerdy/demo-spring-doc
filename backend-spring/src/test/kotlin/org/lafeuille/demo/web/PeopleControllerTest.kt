@@ -10,8 +10,8 @@ import org.mockito.kotlin.any
 import org.mockito.kotlin.eq
 import org.mockito.kotlin.whenever
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.boot.test.autoconfigure.restdocs.AutoConfigureRestDocs
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest
+import org.springframework.boot.restdocs.test.autoconfigure.AutoConfigureRestDocs
+import org.springframework.boot.webmvc.test.autoconfigure.WebMvcTest
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.PageImpl
 import org.springframework.data.domain.PageRequest
@@ -45,7 +45,7 @@ class PeopleControllerTest(
                 Page.empty(pageable),
             )
 
-        assertThat(mockMvc.get().uri("/api/v1/people"))
+        assertThat(mockMvc.get().uri("/api/people"))
             .apply(
                 document("GET_people_empty_OK"),
             ).hasStatusOk()
@@ -78,7 +78,7 @@ class PeopleControllerTest(
 
         assertThat(
             mockMvc.get().uri(
-                "/api/v1/people?page={page}&size={size}&sort={prop1}&sort={prop2}",
+                "/api/people?page={page}&size={size}&sort={prop1}&sort={prop2}",
                 0,
                 5,
                 "familyName",
@@ -100,7 +100,7 @@ class PeopleControllerTest(
                 Optional.of(johnSmith.toResponse(Locale.ENGLISH)),
             )
 
-        assertThat(mockMvc.get().uri("/api/v1/people/{uid}", johnSmith.uid))
+        assertThat(mockMvc.get().uri("/api/people/{uid}", johnSmith.uid))
             .apply(
                 document(
                     "GET_people_uid_OK",
@@ -123,7 +123,7 @@ class PeopleControllerTest(
                 Optional.empty(),
             )
 
-        assertThat(mockMvc.get().uri("/api/v1/people/{uid}", PersonFixtures.UnknownGuy.UID))
+        assertThat(mockMvc.get().uri("/api/people/{uid}", PersonFixtures.UnknownGuy.UID))
             .apply(
                 document(
                     "GET_people_uid_NOT_FOUND",
@@ -134,7 +134,7 @@ class PeopleControllerTest(
 
     @Test
     fun test_DELETE_people_uid_NO_CONTENT() {
-        assertThat(mockMvc.delete().uri("/api/v1/people/{uid}", johnSmith.uid))
+        assertThat(mockMvc.delete().uri("/api/people/{uid}", johnSmith.uid))
             .apply(
                 document(
                     "DELETE_people_uid_NO_CONTENT",
