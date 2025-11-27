@@ -2,7 +2,6 @@ package org.lafeuille.demo.web
 
 import org.lafeuille.demo.domain.PersonResponse
 import org.lafeuille.demo.services.PersonService
-import org.springdoc.core.annotations.ParameterObject
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.data.domain.Pageable
 import org.springframework.data.web.PagedResourcesAssembler
@@ -25,7 +24,7 @@ class PeopleController(
 ) {
     @GetMapping
     fun readPeople(
-        @ParameterObject pageable: Pageable,
+        pageable: Pageable,
         locale: Locale,
         pagedResourcesAssembler: PagedResourcesAssembler<PersonResponse>,
     ): PagedModel<EntityModel<PersonResponse>> = pagedResourcesAssembler.toModel(service.getPeople(pageable, locale))

@@ -23,7 +23,6 @@ java {
 dependencyManagement {
     imports {
         mavenBom("org.springframework.cloud:spring-cloud-dependencies:${libs.versions.spring.cloud.asProvider().get()}")
-        mavenBom("org.springdoc:springdoc-openapi-bom:${libs.versions.springdoc.get()}")
         mavenBom("io.cucumber:cucumber-bom:${libs.versions.cucumber.asProvider().get()}")
     }
 }
@@ -40,7 +39,7 @@ dependencies {
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     testAndDevelopmentOnly("org.springframework.boot:spring-boot-devtools")
-    testImplementation("org.springframework.boot:spring-boot-starter-test")
+    testImplementation("org.springframework.boot:spring-boot-restdocs")
     testImplementation("org.springframework.boot:spring-boot-starter-actuator-test")
     testImplementation("org.springframework.boot:spring-boot-starter-data-ldap-test")
     testImplementation("org.springframework.boot:spring-boot-starter-hateoas-test")
