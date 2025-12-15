@@ -27,7 +27,7 @@ jobs:
           build-scan-terms-of-use-agree: "yes"
       - run: ./gradlew build
         working-directory: backend-spring
-      - uses: actions/upload-artifact@v5
+      - uses: actions/upload-artifact@v6
         with:
           name: build-reports
           path: backend-spring/build/reports/
