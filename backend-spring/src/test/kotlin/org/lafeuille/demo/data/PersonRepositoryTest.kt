@@ -12,7 +12,7 @@ import org.lafeuille.demo.fixtures.PersonFixtures.charlesBrown
 import org.lafeuille.demo.fixtures.PersonFixtures.jamesBrown
 import org.lafeuille.demo.fixtures.PersonFixtures.johnSmith
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.boot.test.autoconfigure.data.ldap.DataLdapTest
+import org.springframework.boot.data.ldap.test.autoconfigure.DataLdapTest
 import java.util.function.Consumer
 
 @DataLdapTest
