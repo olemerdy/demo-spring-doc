@@ -23,6 +23,7 @@ java {
 dependencyManagement {
     imports {
         mavenBom("org.springframework.cloud:spring-cloud-dependencies:${libs.versions.spring.cloud.asProvider().get()}")
+        mavenBom("io.rest-assured:rest-assured-bom:${libs.versions.rest.assured.get()}")
         mavenBom("io.cucumber:cucumber-bom:${libs.versions.cucumber.asProvider().get()}")
     }
 }
