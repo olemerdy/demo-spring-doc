@@ -12,7 +12,7 @@ plugins {
     `java-test-fixtures`
 }
 
-group = "org.lafeuille"
+group = "org.lafeuille.demo"
 
 java {
     toolchain {
