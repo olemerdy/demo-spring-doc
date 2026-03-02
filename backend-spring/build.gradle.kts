@@ -1,14 +1,14 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
+    embeddedKotlin("jvm")
+    embeddedKotlin("plugin.spring")
     alias(libs.plugins.spring.boot)
     alias(libs.plugins.spring.dependency.management)
     alias(libs.plugins.spring.cloud.contract)
     alias(libs.plugins.asciidoctor)
     alias(libs.plugins.cucumber.companion)
     alias(libs.plugins.spotless)
-    embeddedKotlin("jvm")
-    embeddedKotlin("plugin.spring")
     `java-test-fixtures`
 }
 
@@ -73,7 +73,7 @@ spotless {
     }
 }
 
-tasks.withType<KotlinCompile> {
+kotlin {
     compilerOptions {
         freeCompilerArgs.addAll("-Xjsr305=strict", "-Xannotation-default-target=param-property")
     }
