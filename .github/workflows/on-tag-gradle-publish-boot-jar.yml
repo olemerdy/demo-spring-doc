@@ -14,3 +14,4 @@ jobs:
     uses: ./.github/workflows/gradle-publish-boot-jar.yml
     with:
       artifact-version: ${{ github.ref_name }}
+      java-version: '24'
