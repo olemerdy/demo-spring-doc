@@ -1,5 +1,3 @@
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-
 plugins {
     embeddedKotlin("jvm")
     embeddedKotlin("plugin.spring")
@@ -16,7 +14,7 @@ group = "org.lafeuille.demo"
 
 java {
     toolchain {
-        languageVersion = JavaLanguageVersion.of(24)
+        languageVersion = JavaLanguageVersion.of(25)
     }
 }
 
