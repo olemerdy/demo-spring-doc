@@ -28,8 +28,9 @@ jobs:
           java-version: ${{ inputs.java-version }}
       - uses: gradle/actions/setup-gradle@v5
       - name: Publish to Github Packages
-        run: ./gradlew -Pversion=${{ inputs.artifact-version }} publish
+        run: ./gradlew -Pversion=$ARTIFACT_VERSION publish
         working-directory: backend-spring
         env:
+          ARTIFACT_VERSION: ${{ inputs.artifact-version }}
           USERNAME: ${{ github.actor }}
           TOKEN: ${{ secrets.GITHUB_TOKEN }}

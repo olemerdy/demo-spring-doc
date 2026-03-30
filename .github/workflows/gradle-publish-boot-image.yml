@@ -28,8 +28,9 @@ jobs:
           distribution: ${{ inputs.java-distribution }}
       - uses: gradle/actions/setup-gradle@v5
       - name: Publish to Github Packages
-        run: ./gradlew -Pversion=${{ inputs.artifact-version }} bootBuildImage --publishImage
+        run: ./gradlew -Pversion=$ARTIFACT_VERSION bootBuildImage --publishImage
         working-directory: backend-spring
         env:
+          ARTIFACT_VERSION: ${{ inputs.artifact-version }}
           USERNAME: ${{ github.actor }}
           TOKEN: ${{ secrets.GITHUB_TOKEN }}
