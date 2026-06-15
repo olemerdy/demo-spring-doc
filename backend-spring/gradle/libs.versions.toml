@@ -6,7 +6,7 @@ mockito-kotlin = "6.3.0"
 rest-assured = "6.0.0"
 spotless = "8.4.0"
 spring-boot = "4.0.6"
-spring-cloud-contract = "5.0.2"
+spring-cloud-contract = "5.0.3"
 spring-cloud = "2025.1.1"
 spring-dependency-management = "1.1.7"
 
