@@ -26,7 +26,7 @@ dependencyManagement {
     }
 }
 
-val snippetsDir by extra(layout.buildDirectory.file("generated-snippets").get())
+val snippetsDir = layout.buildDirectory.file("generated-snippets")
 
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-actuator")
@@ -84,11 +84,11 @@ tasks.withType<Test> {
 }
 
 tasks.test {
-    outputs.dir(snippetsDir.asFile.path)
+    outputs.dir(snippetsDir)
 }
 
 tasks.asciidoctor {
-    inputs.dir(snippetsDir.asFile.path)
+    inputs.dir(snippetsDir)
     dependsOn(tasks.test)
 }
 
