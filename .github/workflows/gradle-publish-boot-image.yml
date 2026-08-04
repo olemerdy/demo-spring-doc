@@ -26,7 +26,9 @@ jobs:
         with:
           java-version: ${{ inputs.java-version }}
           distribution: ${{ inputs.java-distribution }}
-      - uses: gradle/actions/setup-gradle@v5
+      - uses: gradle/actions/setup-gradle@v6
+        with:
+          cache-provider: basic
       - name: Publish to Github Packages
         run: ./gradlew -Pversion=$ARTIFACT_VERSION bootBuildImage --publishImage
         working-directory: backend-spring
