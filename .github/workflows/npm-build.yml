@@ -1,0 +1,30 @@
+name: Node.js CI
+
+on:
+  push:
+    branches: [ "main" ]
+    paths:
+      - 'frontend-angular'
+  pull_request:
+    branches: [ "main" ]
+    paths:
+      - 'frontend-angular'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    strategy:
+      matrix:
+        node-version: [24.x]
+    steps:
+    - uses: actions/checkout@v7
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v7
+      with:
+        node-version: ${{ matrix.node-version }}
+    - run: npm ci --ignore-scripts
+      working-directory: frontend-angular
+    - run: npm test
+      working-directory: frontend-angular
