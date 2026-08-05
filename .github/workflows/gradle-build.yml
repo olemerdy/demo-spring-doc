@@ -3,8 +3,12 @@ name: Java CI with Gradle
 on:
   push:
     branches: [ "main" ]
+    paths:
+      - 'backend-spring'
   pull_request:
     branches: [ "main" ]
+    paths:
+      - 'backend-spring'
 
 jobs:
   build:
