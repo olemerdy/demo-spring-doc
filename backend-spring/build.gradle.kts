@@ -3,7 +3,6 @@ plugins {
     embeddedKotlin("plugin.spring")
     alias(libs.plugins.spring.boot)
     alias(libs.plugins.spring.dependency.management)
-    alias(libs.plugins.spring.cloud.contract)
     alias(libs.plugins.asciidoctor)
     alias(libs.plugins.cucumber.companion)
     alias(libs.plugins.spotless)
@@ -20,7 +19,7 @@ java {
 
 dependencyManagement {
     imports {
-        mavenBom("org.springframework.cloud:spring-cloud-dependencies:${libs.versions.spring.cloud.asProvider().get()}")
+        mavenBom("org.springframework.cloud:spring-cloud-dependencies:${libs.versions.spring.cloud.get()}")
         mavenBom("io.rest-assured:rest-assured-bom:${libs.versions.rest.assured.get()}")
         mavenBom("io.cucumber:cucumber-bom:${libs.versions.cucumber.asProvider().get()}")
     }
@@ -48,7 +47,6 @@ dependencies {
     testImplementation("org.springframework.boot:spring-boot-starter-validation-test")
     testImplementation("org.springframework.boot:spring-boot-starter-webmvc-test")
     testImplementation("com.unboundid:unboundid-ldapsdk")
-    testImplementation("org.springframework.cloud:spring-cloud-starter-contract-verifier")
     testImplementation("org.springframework.restdocs:spring-restdocs-asciidoctor")
     testImplementation("org.springframework.restdocs:spring-restdocs-mockmvc")
     testImplementation(libs.mockito.kotlin)
@@ -101,8 +99,4 @@ tasks.bootJar {
     ) {
         into("static/docs")
     }
-}
-
-contracts {
-    baseClassForTests = "org.lafeuille.demo.BaseContractVerifierTest"
 }
