@@ -1,5 +1,5 @@
 [versions]
-asciidoctor = "5.1.0"
+asciidoctor = "4.0.5"
 cucumber = "8.0.4"
 cucumber-companion = "1.3.0"
 mockito-kotlin = "6.4.0"
